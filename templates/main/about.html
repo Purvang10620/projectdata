@@ -1,0 +1,140 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>About - Blog Book</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'js/modernizr.js ' %}"></script>
+    <script src="{% static 'js/pace.min.js ' %}"></script>
+    <script src="{% static 'js/general.js ' %}"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- pageheader
+    ================================================== -->
+    
+    {% include "main/header1.html" %}
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content s-content--narrow">
+
+        <div class="row">
+
+            <div class="s-content__header col-full">
+                <h1 class="s-content__header-title">
+                    About Us.
+                </h1>
+            </div> <!-- end s-content__header -->
+
+            <div class="s-content__media col-full">
+                <div class="s-content__post-thumb">
+                    <img src="{%  static 'images/thumbs/about/about-1000.jpg' %}" sizes="(max-width: 2000px) 100vw, 2000px" alt="" >
+                </div>
+            </div> <!-- end s-content__media -->
+
+            <div class="col-full s-content__main">
+
+                <p class="lead">A blog is a type of website or part of a website, which is the publication of
+                regular articles over time in some area of personal or professional interest. By my
+                analysis on website, it was expected that for common people to develop website, they
+                have to face many problems and also they want to share their knowledge, technology,
+                articles, etc. The objective of our Project is to provide all its users with easy access to
+                relevant things and can have the information about what’s happening in the world all
+                around. Blogs are a way to share personal information, a way for the owner to express
+                themselves to target audience. Blog content control creation falls to the owner. People
+                will make their blog using choose their style, template, etc. In its generic form, a blog
+                lets a person record events and ideas freely as individual posts without a container to
+                define their scope and to group them by different goals. Blog posts of various
+                purposes are recorded and presented in a single linear thread. Categories may be used
+                to separate blog posts into a hierarchical structure, but does not conceptually separate
+                posts of different projects of the same category.</p>
+                
+                
+
+                <div class="row block-1-2 block-tab-full">
+                    <div class="col-block">
+                        <h3 class="quarter-top-margin">Choose the perfect design.</h3>
+                        <p>Create a beautiful blog that fits your style. Choose from a selection of easy-to-use templates – all with flexible layouts and hundreds of background images – or design something new.</p>
+                    </div>
+
+                    <div class="col-block">
+                        <h3 class="quarter-top-margin">Get a free domain.</h3>
+                        <p>Give your blog the perfect home. Get a free blogspot.com domain or buy a custom domain with just a few clicks.</p>
+                    </div>
+
+                    <div class="col-block">
+                        <h3 class="quarter-top-margin">Know your audience.</h3>
+                        <p>Find out which posts are a hit with Blogger’s built-in analytics. You’ll see where your audience is coming from and what they’re interested in. You can even connect your blog directly to Google Analytics for a more detailed look.</p>
+                    </div>
+
+                    <div class="col-block">
+                        <h3 class="quarter-top-margin">Hang onto your memories.</h3>
+                        <p>Save the moments that matter. Blogger lets you safely store thousands of posts, photos, and more with Google for free.</p>
+                    </div>
+
+                </div>
+
+
+            </div> <!-- end s-content__main -->
+
+        </div> <!-- end row -->
+
+    </section> <!-- s-content -->
+
+
+    <!-- s-extra
+    ================================================== -->
+    {% include "main/footer.html" %}
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+   <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+{% load static %}
+<!-- MAIN CONTENT-->
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-full s-content__main custom_main">
+
+                    <h1>Profile</h1>
+                    <img src="{% static 'images/icon/avatar-05.jpg' %}" alt="Cynthia Harvey" style="margin-left: 10px; border-radius: 62px; height: 130px;" />
+                    
+                    <form name="cForm" id="cForm" method="post" action="editprofile" >
+                        <fieldset>
+                             {% csrf_token %}
+                            <div class="form-field">
+                                <label>Username:</label>
+                                <input name="name" type="text" id="name" class="full-width" value="{{request.user}}" disabled="">
+                            
+                            </div>
+                            <div class="form-field">
+                                <label>Email:</label>
+                                <input type="email" name="email" id="email" class="full-width" value="{{user.email}}" disabled="">
+                                
+                            </div>
+                            <div class="form-field">
+                                <label>Country:</label>
+                                <input type="text" name="country" id="country" class="full-width"  disabled="">
+                                
+                            </div>
+                            <div class="form-field">
+                                <label>City:</label>
+                                <input type="text" name="city" id="city" class="full-width"  disabled="">
+                                
+                            </div>
+                            <div class="form-field">
+                                <label>Phone:</label>
+                                <input type="tel" name="phone" id="phone" class="full-width"  disabled="">
+                                
+                            </div>
+                        
+                            <button type="submit" class="submit btn btn--primary ">Edit Profile</button>
+                            
+
+                        </fieldset>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

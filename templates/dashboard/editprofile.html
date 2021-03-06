@@ -1,0 +1,359 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags-->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+    <!-- Title Page-->
+    <title>Dashboard</title>
+
+    
+    <!-- Fontfaces CSS-->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/font-face.css' %}" rel="stylesheet" media="all">
+    <link href="{% static 'css/fontawesome.css' %}" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    
+
+    <!-- Main CSS-->
+    <link href="{% static 'css/design.css' %}" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+</head>
+
+<body class="animsition">
+    <div class="page-wrapper">
+        
+        <!-- MENU SIDEBAR-->
+        <aside class="menu-sidebar d-none d-lg-block">
+            <div class="logo">
+                <h3>Blog Book</h3>
+            </div>
+            <div class="menu-sidebar__content js-scrollbar1">
+                <nav class="navbar-sidebar">
+                    <ul class="list-unstyled navbar__list">
+                        <li class="active has-sub">
+                            <a class="js-arrow" href="#">
+                                Dashboard</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                Article</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li class="has-sub">
+                                    <a href="#">Article 1</a>
+                                </li>
+                                <li>
+                                    <a href="#">Article 2</a>
+                                </li>
+                                <li>
+                                    <a href="addarticle" target="_blank"><i class="fa fa-plus" style="margin:0"></i> Add Article</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                Designs</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                Marketing</a>
+                            <ul class="list-unstyled navbar__sub-list js-sub-list">
+                                <li>
+                                    <a href="#"><i class="fab fa-instagram"></i> Instagram Stories</a>
+                                <li>
+                                    <a href="#"><i class="fa fa-share"></i> Share</a>
+                                </li>
+                                <li>
+                                    <a href="#"><i class="fa fa-link"></i> URL Builder</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="profile" target="_blank">
+                                Profile</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                Settings</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#" data-toggle="modal" data-target="#mymodal">
+                                Help</a>
+                        </li>
+                        <li class="has-sub">
+                            <a class="js-arrow" href="#">
+                                Account</a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </aside>
+        <!-- END MENU SIDEBAR-->
+        
+        <!-- PAGE CONTAINER-->
+        <div class="page-container">
+            <!-- HEADER DESKTOP-->
+            <header class="header-desktop">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="header-wrap">
+                            <!-- <form class="form-header" action="" method="POST">
+                                <input class="au-input au-input--xl" type="text" name="search" placeholder="Search for datas &amp; reports..." />
+                                <button class="au-btn--submit" type="submit">
+                                    <i class="zmdi zmdi-search"></i>
+                                </button>
+                            </form> -->
+                            <div class="header-button">
+                                <div class="noti-wrap">
+                                    <div class="noti__item js-item-menu">
+                                        <i class="fa fa-comments"></i>
+                                        <span class="quantity">1</span>
+                                        <div class="mess-dropdown js-dropdown">
+                                            <div class="mess__title">
+                                                <p>You have 2 news message</p>
+                                            </div>
+                                            <div class="mess__item">
+                                                <div class="image img-cir img-40">
+                                                    <img src="{% static 'images/icon/avatar-06.jpg' %}" alt="Michelle Moreno" />
+                                                </div>
+                                                <div class="content">
+                                                    <h6>Michelle Moreno</h6>
+                                                    <p>Have sent a photo</p>
+                                                    <span class="time">3 min ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="mess__item">
+                                                <div class="image img-cir img-40">
+                                                    <img src="{% static 'images/icon/avatar-04.jpg' %}" alt="Diane Myers" />
+                                                </div>
+                                                <div class="content">
+                                                    <h6>Diane Myers</h6>
+                                                    <p>You are now connected on message</p>
+                                                    <span class="time">Yesterday</span>
+                                                </div>
+                                            </div>
+                                            <div class="mess__footer">
+                                                <a href="#">View all messages</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="noti__item js-item-menu">
+                                        <i class="fa fa-envelope"></i>
+                                        <span class="quantity">1</span>
+                                        <div class="email-dropdown js-dropdown">
+                                            <div class="email__title">
+                                                <p>You have 3 New Emails</p>
+                                            </div>
+                                            <div class="email__item">
+                                                <div class="image img-cir img-40">
+                                                    <img src="{% static 'images/icon/avatar-06.jpg' %}" alt="Cynthia Harvey" />
+                                                </div>
+                                                <div class="content">
+                                                    <p>Meeting about new dashboard...</p>
+                                                    <span>Cynthia Harvey, 3 min ago</span>
+                                                </div>
+                                            </div>
+                                            <div class="email__item">
+                                                <div class="image img-cir img-40">
+                                                    <img src="{% static 'images/icon/avatar-05.jpg' %}" alt="Cynthia Harvey" />
+                                                </div>
+                                                <div class="content">
+                                                    <p>Meeting about new dashboard...</p>
+                                                    <span>Cynthia Harvey, Yesterday</span>
+                                                </div>
+                                            </div>
+                                            <div class="email__item">
+                                                <div class="image img-cir img-40">
+                                                    <img src="{% static 'images/icon/avatar-04.jpg' %}" alt="Cynthia Harvey" />
+                                                </div>
+                                                <div class="content">
+                                                    <p>Meeting about new dashboard...</p>
+                                                    <span>Cynthia Harvey, April 12,,2018</span>
+                                                </div>
+                                            </div>
+                                            <div class="email__footer">
+                                                <a href="#">See all emails</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="noti__item js-item-menu">
+                                        <i class="fa fa-bell"></i>
+                                        <span class="quantity">3</span>
+                                        <div class="notifi-dropdown js-dropdown">
+                                            <div class="notifi__title">
+                                                <p>You have 3 Notifications</p>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c1 img-cir img-40">
+                                                    <i class="fa fa-envelope-open"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <p>You got a email notification</p>
+                                                    <span class="date">April 12, 2018 06:50</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c2 img-cir img-40">
+                                                    <i class="fa fa-user"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <p>Your account has been blocked</p>
+                                                    <span class="date">April 12, 2018 06:50</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__item">
+                                                <div class="bg-c3 img-cir img-40">
+                                                    <i class="fa fa-file-code"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <p>You got a new file</p>
+                                                    <span class="date">April 12, 2018 06:50</span>
+                                                </div>
+                                            </div>
+                                            <div class="notifi__footer">
+                                                <a href="#">All notifications</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <!-- HEADER DESKTOP-->
+
+            <!-- MAIN CONTENT-->
+            <div class="main-content">
+                <div class="section__content section__content--p30">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-full s-content__main custom_main">
+
+                                    
+                                    <h1>Edit Profie</h1>
+                                    
+                                    <form name="cForm" id="cForm" method="post" action="profile_add" >
+                                         {% csrf_token %}
+                                        <fieldset>
+                                            <div class="form-field">
+                                                <label>Email:</label>
+                                                <input type="email" name="uemail" id="email" class="full-width" value="{{user.email}}" disabled="">
+                                                
+                                            </div>
+                                            <div class="form-field">
+                                                <label>Username:</label>
+                                                <input name="uname" type="text" id="uname" class="full-width" value="{{request.user}}" disabled="">
+                                            
+                                            </div>
+                                            <div class="form-field">
+                                                <label>Country:</label>
+                                                <input type="text" name="country" id="country" class="full-width" >
+                                                
+                                            </div>
+                                            <div class="form-field">
+                                                <label>City:</label>
+                                                <input type="text" name="city" id="city" class="full-width">
+                                                
+                                            </div>
+                                            <div class="form-field">
+                                                <label>Phone:</label>
+                                                <input type="tel" name="phone" id="phone" class="full-width" >
+                                                
+                                            </div>
+                                        
+                                            <button type="submit" class="submit btn btn--primary ">Save</button>
+                                            
+
+                                        </fieldset>
+                                    </form>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END MAIN CONTENT-->
+            <!-- END PAGE CONTAINER-->
+        </div>
+
+    </div>
+    <!-- model -->
+    <div class="modal fade" id="mymodal" role="dialog">
+        <div class="modal-dialog">
+    
+            <!-- Modal content-->
+            <div class="modal-content">
+            	<div class="modal-header">
+            		<h5>Assistent</h5>
+            	</div>
+                <div class="modal-body">
+                    <h4>Create Your Own Site</h4>
+                    <div class="modelbox">
+	                    <h5>Include Site Title or Logo</h5>
+	                    <span>
+	                    	Your site title or logo appears on all pages and is used by search engines. To include yours, edit the header of your site. Including both title and logo is strongly recommended.
+	                    </span>
+	                </div>
+	                <div class="modelbox">
+	                    <h5>Add and Delete Pages</h5>
+	                    <span>
+	                    	Use the Pages panel to add, arrange, and delete any pages on your site.Add as many pages as you need. Find the right layout for your idea and start adding content.
+	                    </span>
+	                </div>
+	                <div class="modelbox">
+	                    <h5>Change Fonts and Colors</h5>
+	                    <span>
+	                    	Use the Design panel to pick beautiful fonts and designer colors for your entire site.Changes in the Design panel apply to your entire site. You can change them for individual pages when you edit them.Make sure your colors are easy on the eye and your fonts are legible.To speed up your site, we recommend using as few fonts as possible.
+	                    </span>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" id="close" data-dismiss="modal">close</button>
+                </div>
+            </div>
+      
+        </div>
+    </div>
+
+    <!-- Jquery JS-->
+    <script src="{% static 'vendor/jquery-3.2.1.min.js' %}"></script>
+    <!-- Bootstrap JS-->
+    <script src="{% static 'vendor/bootstrap-4.1/popper.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap-4.1/bootstrap.min.js' %}"></script>
+    <!-- Vendor JS       -->
+    <script src="{% static 'vendor/slick/slick.min.js' %}">
+    </script>
+    <script src="{% static 'vendor/wow/wow.min.js' %}"></script>
+    <script src="{% static 'vendor/animsition/animsition.min.js' %}"></script>
+    <script src="{% static 'vendor/bootstrap-progressbar/bootstrap-progressbar.min.js' %}">
+    </script>
+    <script src="{% static 'vendor/counter-up/jquery.waypoints.min.js' %}"></script>
+    <script src="{% static 'vendor/counter-up/jquery.counterup.min.js' %}">
+    </script>
+    <script src="{% static 'vendor/circle-progress/circle-progress.min.js' %}"></script>
+    <script src="{% static 'vendor/perfect-scrollbar/perfect-scrollbar.js' %}"></script>
+    <script src="{% static 'vendor/chartjs/Chart.bundle.min.js' %}"></script>
+    <script src="{% static 'vendor/select2/select2.min.js' %}">
+    </script>
+
+    <!-- Main JS-->
+    <script src="{% static 'js/main-dashboard.js' %}"></script>
+
+</body>
+
+</html>
+<!-- end document-->

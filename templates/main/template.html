@@ -1,0 +1,187 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Template - Blog Book</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <!-- script
+    ================================================== -->
+    <script src="{% static 'js/modernizr.js ' %}"></script>
+    <script src="{% static 'js/pace.min.js ' %}"></script>
+    <script src="{% static 'js/general.js ' %}"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <!-- pageheader
+    ================================================== -->
+    {% include "main/header1.html" %}
+
+
+    <!-- s-content
+    ================================================== -->
+    <section class="s-content">
+
+        <div class="row narrow">
+            <div class="col-full s-content__header" data-aos="fade-up">
+                <h1>Amazing Theme Demos</h1>
+
+                <p class="lead">Get started with any of our best templates and customize it to fit your needs, whether it's contact forms or color palettes. </p>
+            </div>
+        </div>
+        <div class="row top">
+
+            <div class="col-twelve md-twelve tab-full popular">
+                  
+                
+                <div class="block-1-2 block-m-full popular__posts">
+                    {% for u in users%}
+                    <article class="col-block popular__post">
+                        
+                        <div class="custom-thumb-img">
+                            
+                                <img src="{{ u.templateimg.url }}" alt="">
+                            
+                        </div>
+                        <div class="action-btn">
+                          <button>Edit</button>
+                          <button onclick="window.location.href='{{ u.templatename }}'">View</button>
+                        </div>
+                        
+                    </article>
+                    {% endfor %}
+                    <!-- <article class="col-block popular__post">
+                        <div class="custom-thumb-img">
+                            <a href="#0" class="popular__thumb">
+                                <img src="{% static 'images/video-post.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="action-btn">
+                          <button>Edit</button>
+                          <button onclick="window.location.href='single-video'">View</button>
+                        </div>
+                    </article>
+                    <article class="col-block popular__post">
+                        <div class="custom-thumb-img">
+                            <a href="#0" class="popular__thumb">
+                                <img src="{% static 'images/audio-post.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="action-btn">
+                          <button>Edit</button>
+                          <button onclick="window.location.href='single-audio'">View</button>
+                        </div>
+                    </article>
+                    <article class="col-block popular__post">
+                        <div class="custom-thumb-img">
+                            <a href="#0" class="popular__thumb">
+                                <img src="{% static 'images/gallary-post.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="action-btn">
+                          <button>Edit</button>
+                          <button onclick="window.location.href='single-gallery'">View</button>
+                        </div>
+                    </article>
+                    <article class="col-block popular__post">
+                        <div class="custom-thumb-img">
+                            <a href="#0" class="popular__thumb">
+                                <img src="{% static 'images/standard-post.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="action-btn">
+                          <button>Edit</button>
+                          <button onclick="window.location.href='single-standard'">View</button>
+                        </div>
+                    </article>
+                    <article class="col-block popular__post">
+                        <div class="custom-thumb-img">
+                            <a href="#0" class="popular__thumb">
+                                <img src="{% static 'images/standard-post.jpg' %}" alt="">
+                            </a>
+                        </div>
+                        <div class="action-btn">
+                          <button>Edit</button>
+                          <button onclick="window.location.href='single-standard'">View</button>
+                        </div>
+                    </article> -->
+                    
+                </div> <!-- end popular_posts -->
+            </div> <!-- end popular -->
+            
+            
+
+        </div> <!-- end row -->
+
+        <div class="row">
+            <div class="col-full">
+                <nav class="pgn">
+                    <ul>
+                        <li><a class="pgn__prev" href="#0">Prev</a></li>
+                        <li><span class="pgn__num current">1</span></li>
+                        <li><a class="pgn__num" href="#0">2</a></li>
+                        <li><a class="pgn__num" href="#0">3</a></li>
+                        <li><a class="pgn__num" href="#0">4</a></li>
+                        <li><a class="pgn__num" href="#0">5</a></li>
+                        <li><span class="pgn__num dots">…</span></li>
+                        <li><a class="pgn__num" href="#0">8</a></li>
+                        <li><a class="pgn__next" href="#0">Next</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+
+    </section> <!-- s-content -->
+    
+
+    <!-- s-extra
+    ================================================== -->
+    
+    {% include "main/footer.html" %}
+
+
+    <!-- preloader
+    ================================================== -->
+    <div id="preloader">
+        <div id="loader">
+            <div class="line-scale">
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+                <div></div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Java Script
+    ================================================== -->
+    <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
+    <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+{% load static %}
+<div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-full s-content__main custom_main">
+
+                        <h1>Add new article.</h1>
+
+                        <form name="cForm" id="cForm" method="post" action="" >
+                            <fieldset>
+
+                                <div class="form-field">
+                                    <input name="articlename" type="text" id="articlename" class="full-width" placeholder="Type Your Article Name  ">
+                                    <span id="Name_error" style="color: red"></span>
+                                </div>
+                            
+                                <div class="form-field">
+                                    <textarea name="articlecontent" id="articlecontent" class="full-width" placeholder="Write your article" ></textarea>
+                                    <span id="title_error" style="color: red"></span>
+                                </div>
+
+                                <div class="form-field">
+                                    <select name="blogcatagory" id="blogcatagory" class="full-width"> 
+                                        <option>Catagories</option>                                      
+                                        <option value="lifestyle">Lifestyle</option>
+                                        <option value="health">Health</option>
+                                        <option value="family">Family</option>
+                                        <option value="corporate">Corporate</option>
+                                        <option value="travel">Travel</option>
+                                        <option value="technical">Technical</option>
+                                        <option value="startup">StartUp</option>
+                                        <option value="photography">Photography</option>
+                                        <option value="photography">Other</option>
+                                    </select>
+                                </div>
+                                <div class="form-field">
+                                    <label>Upload image</label>    <input type="file" name="articleimage" id="articleimage" class="full-width" accept="image/x-png,image/gif,image/jpeg"/>
+                                </div>
+                                <div class="form-field">
+                                    <input type="text" name="keyword" id="keyword" class="full-width" placeholder="keywords">
+                                </div>
+                                <button type="submit" class="submit btn btn--primary full-width">Add Article</button>
+                                
+
+                            </fieldset>
+                        </form> <!-- end form -->
+                    </div>
+                </div>
+            </div>
+        </div>
