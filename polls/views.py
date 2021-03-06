@@ -46,8 +46,8 @@ def index9(request):
 
 
 def dashboard(request):
-	us=blogTemplate.objects.all()
-	return render(request,"dashboard/index.html" ,{"users": us})
+	template=request.GET["template"]
+	return render(request,"dashboard/index.html" ,{"temp": template})
 
 def main(request):
 	return render(request=request,template_name="dashboard/main.html")

@@ -248,7 +248,7 @@
             <!-- MAIN CONTENT-->
             <div class="main-content">
                 <div class="section__content section__content--p30">
-                    {% include "main/single-standard.html" %}
+                    
                 </div>
             </div>
             <!-- END MAIN CONTENT-->
@@ -318,6 +318,9 @@
     <!-- Main JS-->
     <script src="{% static 'js/main-dashboard.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
+    <script type="text/javascript">
+        $('.main-content').load('{{ temp }}');
+    </script>
 
 </body>
 

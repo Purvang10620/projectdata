@@ -21,3 +21,4 @@ $('#setting').click(function(){
 $('#back').click(function(){
     $('.js-scrollbar1').load('sidebar');
 })
+
