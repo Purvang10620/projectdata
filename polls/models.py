@@ -5,7 +5,6 @@ from django.db import models
 class Profile(models.Model):
 	email=models.CharField(max_length=50)
 	name=models.CharField(max_length=50)
-	password=models.CharField(max_length=20)
 	gender=models.CharField(max_length=50)
 	country=models.CharField(max_length=50)
 	city=models.CharField(max_length=50)

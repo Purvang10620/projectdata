@@ -107,14 +107,16 @@ def getdata(request):
 	# else:
 	# 	return render(request,"main/signup.html",{})
 def profile_add(request):
-	email={{user.email}}
-	uname={{request.user}}
+	#print("email=",request["email"])
+
+	email=request.POST["email"]
+	uname=request.POST["uname"]
 	country=request.POST["country"]
 	city=request.POST["city"]
 	phone=request.POST["phone"]
-	data=Proile(email=email, name=uname, password=psw, country=country,city=city,phone=phone)
+	data=Profile(email=email,name=uname, country=country,city=city,phone=phone)
 	data.save()
-	return render(request,"dashboard/profile.html",{})
+	return redirect('/profile')
 	
 
 def login(request):
