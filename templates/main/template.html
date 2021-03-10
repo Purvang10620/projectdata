@@ -66,8 +66,14 @@
                             
                         </div>
                         <div class="action-btn">
-                          <button data-template="{{ u.templatename }}" class="editbtn">Edit</button>
-                          <button onclick="window.location.href='{{ u.templatename }}'">View</button>
+                          {% if user.is_authenticated %} 
+                            <button data-template="{{ u.templatename }}" class="editbtn">Edit</button>
+                            <button onclick="window.location.href='{{ u.templatename }}'">View</button>
+                          {% else %}
+                            <button onclick="window.location.href='signin'">Edit</button>
+                            <button onclick="window.location.href='{{ u.templatename }}'">View</button>
+                           {% endif %} 
+                          
                         </div>
                         
                     </article>

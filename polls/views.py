@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Profile,dataForward,blogTemplate
+from .models import Profile,dataForward,blogTemplate,blogDetails
 from django.http import HttpResponse
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
@@ -39,7 +39,9 @@ def index7(request):
 	return render(request=request,template_name="main/single-gallery.html")
 
 def index8(request):
-	return render(request=request,template_name="main/single-standard.html")
+	blog_data=blogDetails.objects.all()
+	return render(request,"main/single-standard.html" ,{"blog": blog_data})
+	# return render(request=request,template_name="main/single-standard.html")
 
 def index9(request):
 	return render(request=request,template_name="main/single-video.html")
@@ -118,6 +120,17 @@ def profile_add(request):
 	data.save()
 	return redirect('/profile')
 	
+def blog_add(request):
+	
+	blogname=request.POST["blogname"]
+	blogtitle=request.POST["title"]
+	blogcat=request.POST["blogcatagory"]
+	author=request.user
+	temp=request.POST["template"]
+	tempid=blogTemplate.objects.get(templatename=temp)
+	data=blogDetails(blogName=blogname,blogTitle=blogtitle, blogCatagories=blogcat,blogAuthor=author,template=tempid)
+	data.save()	
+	return redirect('/home')
 
 def login(request):
 	if request.method=='POST':

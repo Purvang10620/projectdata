@@ -51,6 +51,7 @@ urlpatterns = [
     path("settings",views.settings,name="settings"),
     path("sidebar",views.sidebar,name="sidebar"),
     path("template",views.templateImage,name="template"),
+    path("blog_add",views.blog_add,name="blog_add"),
     #path("change_password",view.change_password,name="change_password")
     #path("forget",views.index12,name="forget"),
     path("contactInfoData",views.dataSend,name="contactInfoData"),

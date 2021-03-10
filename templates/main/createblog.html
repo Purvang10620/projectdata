@@ -1,70 +1,17 @@
 {% load static %}
-
-<!DOCTYPE html>
-<html class="no-js" lang="en">
-<head>
-
-    <!--- basic page needs
-    ================================================== -->
-    <meta charset="utf-8">
-    <title>Create Blog - Blog Book</title>
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <!-- mobile specific metas
-    ================================================== -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-    <!-- CSS
-    ================================================== -->
-   <link rel="stylesheet" href="{% static 'css/base.css' %}">
-    <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
-    <link rel="stylesheet" href="{% static 'css/main.css' %}">
-
-    <!-- script
-    ================================================== -->
-    <script src="{% static 'js/modernizr.js ' %}"></script>
-    <script src="{% static 'js/pace.min.js ' %}"></script>
-    <script src="{% static 'js/general.js ' %}"></script>
-
-    <!-- favicons
-    ================================================== -->
-    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
-    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
-
-</head>
-
-<body id="top">
-
-    <!-- pageheader
-    ================================================== -->
-    {% include "main/header1.html" %}
-
-
-
-    <!-- s-content
-    ================================================== -->
-    <section class="s-content s-content--narrow">
-
+<!-- MAIN CONTENT-->
+<div class="section__content section__content--p30">
+    <div class="container-fluid">
         <div class="row">
+            <div class="col-md-12">
+                <div class="col-full s-content__main custom_main">
 
-            <!-- end s-content__header -->
-    
-            <!-- <div class="s-content__media col-full">
-                <div id="map-wrap">
-                    <div id="map-container"></div>
-                    <div id="map-zoom-in"></div>
-                    <div id="map-zoom-out"></div>
-                </div> 
-            </div> -->
-
-            <div class="col-full s-content__main custom_main">
-
-                <h1>Create New Blog Here.</h1>
-
-                <form name="cForm" id="cForm" method="post" action="" onsubmit="return validateBlog()">
+                    <h1>Create New Blog Here.</h1>
+                    
+                    
+                    <form name="cForm" id="cForm" method="post" action="blog_add" onsubmit="return validateBlog()">
                     <fieldset>
-
+                        {% csrf_token %}
                         <div class="form-field">
                             <input name="blogname" type="text" id="blogname" class="full-width" placeholder="Type Your Blog Name (Ex: BlogBook.com/... ) ">
                             <span id="Name_error" style="color: red"></span>
@@ -89,45 +36,16 @@
                                 <option value="photography">Other</option>
                             </select>
                         </div>
+                        <input type="hidden" name="template" value="{{request.GET.template}}">
                         <button type="submit" class="submit btn btn--primary full-width">Submit</button>
                         
 
                     </fieldset>
                 </form> <!-- end form -->
 
-
-            </div> <!-- end s-content__main -->
-
-        </div> <!-- end row -->
-
-    </section> <!-- s-content -->
-
-
-    <!-- s-extra
-    ================================================== -->
-    
-    {% include "main/footer.html" %}
-
-    <!-- preloader
-    ================================================== -->
-    <div id="preloader">
-        <div id="loader">
-            <div class="line-scale">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
+                </div>
             </div>
         </div>
     </div>
-
-
-    <!-- Java Script
-    ================================================== -->
-     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'js/plugins.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
-</body>
-
-</html>
+</div>
+<script src="{% static 'js/general.js ' %}"></script>

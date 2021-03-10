@@ -80,8 +80,8 @@
                             </ul>
                         </li>
                         <li>
-                            <a class="js-arrow" href="profile" id="profile" >
-                                Profile</a>
+                            <a class="js-arrow" href="createblog" id="createblog" >
+                                Blog</a>
                         </li>
                         <li>
                             <a class="js-arrow" href="#" id="setting">
@@ -320,6 +320,9 @@
     <script src="{% static 'js/custom.js' %}"></script>
     <script type="text/javascript">
         $('.main-content').load('{{ temp }}');
+        $('#createblog').click(function(){
+            $('.main-content').load('createblog?template={{ temp }}');
+        }) 
     </script>
 
 </body>

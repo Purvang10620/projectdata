@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import User
 # Create your models here.
 
 class Profile(models.Model):
@@ -20,4 +20,15 @@ class blogTemplate(models.Model):
 	templatename=models.CharField(max_length=200)
 	templateimg=models.ImageField(upload_to="profiles")
 
+	def __str__(self):
+		return self.templatename
 
+class blogDetails(models.Model):
+	blogName=models.CharField(max_length=200)
+	blogTitle=models.CharField(max_length=200)
+	blogCatagories=models.CharField(max_length=100)
+	blogAuthor=models.ForeignKey(User,on_delete=models.CASCADE,default=None)
+	template=models.ForeignKey(blogTemplate,on_delete=models.CASCADE,default=None)
+
+	def __str__(self):
+		return self.blogTitle
