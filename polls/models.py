@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.utils import timezone
 # Create your models here.
 
 class Profile(models.Model):
@@ -32,3 +33,12 @@ class blogDetails(models.Model):
 
 	def __str__(self):
 		return self.blogTitle
+
+class articleDetail(models.Model):
+	articleName=models.CharField(max_length=200)
+	article=models.TextField()
+	articleCatagories=models.CharField(max_length=100)
+	articleImage=models.ImageField(upload_to="profiles")
+	articleKeyword=models.CharField(max_length=200)
+	blogAssociated=models.ForeignKey(blogDetails,on_delete=models.CASCADE,default=None)
+	articleDate=models.DateField(default=timezone.now)

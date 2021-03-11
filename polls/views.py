@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Profile,dataForward,blogTemplate,blogDetails
 from django.http import HttpResponse
+from django.core.paginator import Paginator
 from django.contrib.auth.models import User, auth
 from django.contrib import messages
 from django.contrib.auth import authenticate,login,logout,update_session_auth_hash
@@ -39,9 +40,8 @@ def index7(request):
 	return render(request=request,template_name="main/single-gallery.html")
 
 def index8(request):
-	blog_data=blogDetails.objects.all()
-	return render(request,"main/single-standard.html" ,{"blog": blog_data})
-	# return render(request=request,template_name="main/single-standard.html")
+	# return render(request,"main/single-standard.html" ,{})
+	return render(request=request,template_name="main/single-standard.html")
 
 def index9(request):
 	return render(request=request,template_name="main/single-video.html")
@@ -68,8 +68,8 @@ def settings(request):
 
 def sidebar(request):
 	return render(request=request,template_name="dashboard/mainsidebar.html")
-# def index12(request):
-# 	return render(request=request,template_name="main/forget-password.html")
+def blog_details(request):
+	return render(request=request,template_name="dashboard/blogdetails.html")
 
 # def index13(request):
 # 	return render(request=request,template_name="main/resetpassword.html")
@@ -198,4 +198,8 @@ def dataSend(request):
 
 def templateImage(request):
 	us=blogTemplate.objects.all()
-	return render(request,"main/template.html" ,{"users": us})
+	template_paginator = Paginator(us, 6)
+	page_num = request.GET.get('page')
+	page = template_paginator.get_page(page_num)
+
+	return render(request,"main/template.html" ,{"page": page})

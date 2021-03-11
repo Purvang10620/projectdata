@@ -35,12 +35,13 @@ urlpatterns = [
     path("login",views.login,name="login"),
     path("logout",views.handlelogout,name="logout"),
     path("signup",views.index5,name="signup"),
-    #path("sendemail",views.sendemail,name="sendemail"),
+    path("blog_details",views.blog_details,name="blog_details"),
     path("single-audio",views.index6,name="single-audio"),
     path("single-gallery",views.index7,name="single-gallery"),
     path("single-standard",views.index8,name="single-standard"),
     path("single-video",views.index9,name="single-video"),  
     path("getdata",views.getdata),
+
 
     path("userdashboard",views.dashboard,name="dashboard"),
     path("main",views.main,name="main"),

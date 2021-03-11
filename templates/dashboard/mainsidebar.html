@@ -26,7 +26,6 @@
     <!-- Main CSS-->
     <link href="{% static 'css/design.css' %}" rel="stylesheet" media="all">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
-    <title></title>
 </head>
 <body>
     <nav class="navbar-sidebar">
@@ -70,8 +69,8 @@
             </ul>
         </li>
         <li>
-            <a class="js-arrow" href="profile" id="profile" >
-                Profile</a>
+            <a class="js-arrow" href="createblog" id="createblog" >
+                                Blog</a>
         </li>
         <li>
             <a class="js-arrow" href="#" id="setting">
@@ -123,6 +122,12 @@
     <!-- Main JS-->
     <script src="{% static 'js/main-dashboard.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
+    <script type="text/javascript">
+        $('.main-content').load('{{ temp }}');
+        $('#createblog').click(function(){
+            $('.main-content').load('createblog?template={{ temp }}');
+        }) 
+    </script>
 </body>
 </html>
 

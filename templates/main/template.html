@@ -57,7 +57,7 @@
                   
                 
                 <div class="block-1-2 block-m-full popular__posts">
-                    {% for u in users%}
+                    {% for u in page.object_list %}
                     <article class="col-block popular__post">
                         
                         <div class="custom-thumb-img">
@@ -145,15 +145,19 @@
             <div class="col-full">
                 <nav class="pgn">
                     <ul>
-                        <li><a class="pgn__prev" href="#0">Prev</a></li>
-                        <li><span class="pgn__num current">1</span></li>
+                        {% if page.has_previous %}
+                        <li><a class="pgn__prev" href="{% url 'template' %}?page={{ page.previous_page_number }}">Prev</a></li>
+                        {% endif %}
+                        <!-- <li><span class="pgn__num current">1</span></li>
                         <li><a class="pgn__num" href="#0">2</a></li>
                         <li><a class="pgn__num" href="#0">3</a></li>
                         <li><a class="pgn__num" href="#0">4</a></li>
                         <li><a class="pgn__num" href="#0">5</a></li>
                         <li><span class="pgn__num dots">…</span></li>
-                        <li><a class="pgn__num" href="#0">8</a></li>
-                        <li><a class="pgn__next" href="#0">Next</a></li>
+                        <li><a class="pgn__num" href="#0">8</a></li> -->
+                        {% if page.has_next %}
+                        <li><a class="pgn__next" href="{% url 'template' %}?page={{ page.next_page_number }}">Next</a></li>
+                        {% endif %}
                     </ul>
                 </nav>
             </div>
