@@ -18,9 +18,6 @@ from django.contrib.auth import views as auth_views
 from django.urls import path
 from polls import views
 from django.conf import settings
-
-
-
 from django.conf.urls.static import static
 app_name="main"
 
@@ -35,15 +32,22 @@ urlpatterns = [
     path("login",views.login,name="login"),
     path("logout",views.handlelogout,name="logout"),
     path("signup",views.index5,name="signup"),
-    path("blog_details",views.blog_details,name="blog_details"),
+    path("solo",views.solo_templete,name="solo_templete"),
+
+
+    
+    path("add_subscriber",views.add_subscriber,name="add_subscriber"),
+
     path("single-audio",views.index6,name="single-audio"),
     path("single-gallery",views.index7,name="single-gallery"),
     path("single-standard",views.index8,name="single-standard"),
     path("single-video",views.index9,name="single-video"),  
     path("getdata",views.getdata),
-
-
+    path("article_details",views.article_details,name="article_details"),
+    path("userblogdetail",views.userblogdetail,name="userblogdetail"),
     path("userdashboard",views.dashboard,name="dashboard"),
+    path("myaccount",views.useraccount,name="useraccount"),
+    path("sociallink",views.sociallink,name="sociallink"),
     path("main",views.main,name="main"),
     path("addarticle",views.add_article,name="addarticle"),
     path("profile",views.profile,name="profile"),
@@ -53,6 +57,7 @@ urlpatterns = [
     path("sidebar",views.sidebar,name="sidebar"),
     path("template",views.templateImage,name="template"),
     path("blog_add",views.blog_add,name="blog_add"),
+    path("viewarticle",views.viewarticle,name="viewarticle"),
     #path("change_password",view.change_password,name="change_password")
     #path("forget",views.index12,name="forget"),
     path("contactInfoData",views.dataSend,name="contactInfoData"),

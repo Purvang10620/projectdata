@@ -49,21 +49,18 @@
                             <a class="js-arrow" href="#">
                                 Article</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-                                    <a href="#">Article 1</a>
-                                </li>
-                                <li>
-                                    <a href="#">Article 2</a>
-                                </li>
+                                {% for i in articleid %}                             
+                                    <li>
+                                        <a href="viewarticle" class="view_article" data-article="{{i.id}}">{{i.articleName}}</a>
+                                    </li>
+                                {% endfor %}
+                                
                                 <li>
                                     <a href="addarticle" id="addarticle"><i class="fa fa-plus" style="margin:0"></i> Add Article</a>
                                 </li>
                             </ul>
                         </li>
-                        <li>
-                            <a class="js-arrow" href="#">
-                                Designs</a>
-                        </li>
+                        
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 Marketing</a>
@@ -322,6 +319,11 @@
         $('.main-content').load('{{ temp }}');
         $('#createblog').click(function(){
             $('.main-content').load('createblog?template={{ temp }}');
+        })
+
+        $('.view_article').click(function(){
+            var articleId = $(this).data('article');
+            $('.main-content').load('viewarticle?articleId='+articleId);
         }) 
     </script>
 

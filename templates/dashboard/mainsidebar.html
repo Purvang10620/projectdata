@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!-- Required meta tags-->
+        <!-- Required meta tags-->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="au theme template">
@@ -29,76 +29,73 @@
 </head>
 <body>
     <nav class="navbar-sidebar">
-    <ul class="list-unstyled navbar__list">
-        <li class="active">
-            <a class="js-arrow" href="main" id="main">
-                Dashboard</a>
-        </li>
-        <li class="has-sub">
-            <a class="js-arrow" href="#">
-                Article</a>
-            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                <li>
-                    <a href="#">Article 1</a>
-                </li>
-                <li>
-                    <a href="#">Article 2</a>
-                </li>
-                <li>
-                    <a href="addarticle" id="addarticle"><i class="fa fa-plus" style="margin:0"></i> Add Article</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a class="js-arrow" href="#">
-                Designs</a>
-        </li>
-        <li class="has-sub">
-            <a class="js-arrow" href="#">
-                Marketing</a>
-            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                <li>
-                    <a href="#"><i class="fab fa-instagram"></i> Instagram Stories</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-share"></i> Share</a>
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-link"></i> URL Builder</a>
-                </li>
-            </ul>
-        </li>
-        <li>
-            <a class="js-arrow" href="createblog" id="createblog" >
-                                Blog</a>
-        </li>
-        <li>
-            <a class="js-arrow" href="#" id="setting">
-                Settings</a>
-        </li>
-        <li>
-            <a class="js-arrow" href="#" data-toggle="modal" data-target="#mymodal">
-                Help</a>
-        </li>
-        <li class="has-sub">
-            <a class="js-arrow" href="#">
-                Account</a>
-            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                <li>
-
-                    <i class="fa fa-user"></i>{{request.user}}
-                </li>
-                
-                    <li><a href="logout" id="logout" title="">Logout</a></li>
-                
-                
-            </ul>
-        </li>
-    </ul>
+        <ul class="list-unstyled navbar__list">
+            <li class="active">
+                <a class="js-arrow" href="main" id="main">
+                    Dashboard</a>
+            </li>
+            <li class="has-sub">
+                <a class="js-arrow" href="#">
+                    Article</a>
+                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                    {% for i in articleid %}                             
+                        <li>
+                            <a href="viewarticle" class="view_article">{{i.articleName}}</a>
+                        </li>
+                    {% endfor %}
                     
-</nav>
+                    <li>
+                        <a href="addarticle" id="addarticle"><i class="fa fa-plus" style="margin:0"></i> Add Article</a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li class="has-sub">
+                <a class="js-arrow" href="#">
+                    Marketing</a>
+                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                    <li>
+                        <a href="#"><i class="fab fa-instagram"></i> Instagram Stories</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-share"></i> Share</a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-link"></i> URL Builder</a>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <a class="js-arrow" href="createblog" id="createblog" >
+                    Blog</a>
+            </li>
+            <li>
+                <a class="js-arrow" href="#" id="setting">
+                    Settings</a>
+            </li>
+            <li>
+                <a class="js-arrow" href="#" data-toggle="modal" data-target="#mymodal">
+                    Help</a>
+            </li>
+            <li class="has-sub">
+                <a class="js-arrow" href="#">
+                    Account</a>
+                <ul class="list-unstyled navbar__sub-list js-sub-list">
+                    <li>
+
+                        <i class="fa fa-user"></i>{{request.user}}
+                    </li>
+                    
+                    <li><a href="logout" id="logout" title="">Logout</a></li>
+                   
+                </ul>
+            </li>
+        </ul>
+        
+    </nav>
 
 <!-- Jquery JS-->
+    <!-- Jquery JS-->
     <script src="{% static 'vendor/jquery-3.2.1.min.js' %}"></script>
     <!-- Bootstrap JS-->
     <script src="{% static 'vendor/bootstrap-4.1/popper.min.js' %}"></script>

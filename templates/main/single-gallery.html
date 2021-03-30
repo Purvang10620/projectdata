@@ -45,7 +45,13 @@
 
                 <div class="header__logo" style="padding-left: 350px">
                     <a class="logo" href="#">
-                        <span>Gallery Post Format</span>
+                        
+                        {% if bid is null %}
+                            <span>Gallery Post Format</span>
+                        {% else %}
+
+                            <span>{{ bid.blogTitle }}</span>
+                        {% endif  %}
                     </a>
                 </div> <!-- end header__logo -->
 
@@ -76,7 +82,10 @@
 
         <article class="row format-gallery">
 
-            <div class="s-content__header col-full">
+            
+            {% if bid is null %}
+
+            <<div class="s-content__header col-full">
                 <h1 class="s-content__header-title">
                     This Is a Gallery Post Format.
                 </h1>
@@ -89,6 +98,22 @@
                     </li>
                 </ul>
             </div> <!-- end s-content__header -->
+
+            {% else %}
+                <div class="s-content__header col-full">
+                    <h1 class="s-content__header-title">
+                        {{ bid.blogTitle }}
+                    </h1>
+                    <ul class="s-content__header-meta">
+                        <li class="date">{{ bid.blogDate}}</li>
+                        <li class="cat">
+                            In
+                            <a href="#0">{{ bid.blogCatagories }}</a>
+                            
+                        </li>
+                    </ul>
+                </div>
+            {% endif %}
     
             <div class="s-content__media col-full">
                 <div class="s-content__slider slider">
@@ -108,6 +133,10 @@
 
             <div class="col-full s-content__main">
 
+                
+
+                {% if aid is null %}
+                
                 <p class="lead">Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint.</p>
                 
                 <p>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.
@@ -117,35 +146,23 @@
                 <img src="{% static 'images/wheel-1000.jpg' %}" sizes="(max-width: 2000px) 100vw, 2000px" alt="">
                 </p>
 
-                <h2>Large Heading</h2>
+                {% else %}
+                    <p class="lead">{{ aid.articleName }}</p>
+                    <p>{{ aid.article }}</p>
 
-                <p>Harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus <a href="http://#">omnis voluptas assumenda est</a> id quod maxime placeat facere possimus, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et.</p>
-
-                <blockquote><p>This is a simple example of a styled blockquote. A blockquote tag typically specifies a section that is quoted from another source of some sort, or highlighting text in your post.</p></blockquote>
-
-                <p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.</p>
-
-                <h3>Smaller Heading</h3>
-
-                <p>Dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.
-
-
-
-                <p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa.</p>
-
-                <ul>
-                    <li>Donec nulla non metus auctor fringilla.
-                        <ul>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                            <li>Lorem ipsum dolor sit amet.</li>
-                        </ul>
+                    <p>
+                <img src="{{ aid.articleImage.url }}" sizes="(max-width: 2000px) 100vw, 2000px" alt="">
+                </p>
+                <ul class="s-content__header-meta">
+                    <li class="date">{{ aid.articleDate}}</li>
+                    <li class="cat">
+                        In
+                        <a href="#0">{{ aid.articleCatagories }}</a>
+                        
                     </li>
-                    <li>Donec nulla non metus auctor fringilla.</li>
-                    <li>Donec nulla non metus auctor fringilla.</li>
+                    
                 </ul>
-
-                <p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.</p>
+                {% endif %}
 
                 <p class="s-content__tags">
                     <span>Post Tags</span>
@@ -157,6 +174,10 @@
                         <a href="#0">turpis</a>
                     </span>
                 </p> <!-- end s-content__tags -->
+
+                
+
+                {% if bid is null %}
 
                 <div class="s-content__author">
                     <img src="{% static 'images/avatars/user-03.jpg' %}" alt="">
@@ -177,6 +198,34 @@
                         </ul>
                     </div>
                 </div>
+
+                {% else %}
+                <div class="s-content__author">
+                    <h4 class="s-content__author-name">
+                            About author
+                        </h4>
+
+                    <div class="s-content__author-about">
+                        <h4 class="s-content__author-name">
+                            <a href="#0">{{ bid.blogAuthor }}</a>
+                        </h4>
+                    
+                        <p>
+                           Contact Me on Email<label>{{ bid.blogAuthor.email }}</label>
+                        </p>
+
+                        <ul class="s-content__author-social">
+
+                           <li><a href="#0">Facebook</a></li>
+                           <li><a href="#0">Twitter</a></li>
+                           <li><a href="#0">GooglePlus</a></li>
+                           <li><a href="#0">Instagram</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                {% endif %}
+
                 <div class=" end subscribe">
                         
                     <h4>Subscribe</h4>
@@ -411,91 +460,12 @@
         </div> <!-- end comments-wrap -->
     </section>    
 
-    <!-- s-extra
-    ================================================== -->
-    <section class="s-extra">
-
-        <div class="row top">
-
-            <div class="col-twelve md-twelve tab-full popular">
-                <h3>Other Posts</h3>
-
-                <div class="block-1-2 block-m-full popular__posts">
-                    <article class="col-block popular__post">
-                        <a href="#0" class="popular__thumb">
-                            <img src="{% static 'images/thumbs/small/wheel-150.jpg' %}" alt="">
-                        </a>
-                        <h5><a href="#0">Visiting Theme Parks Improves Your Health.</a></h5>
-                        <section class="popular__meta">
-                                <span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-                            <span class="popular__date"><span>on</span> <time datetime="2017-12-19">Dec 19, 2017</time></span>
-                        </section>
-                    </article>
-                    <article class="col-block popular__post">
-                        <a href="#0" class="popular__thumb">
-                            <img src="{% static 'images/thumbs/small/shutterbug-150.jpg' %}" alt="">
-                        </a>
-                        <h5><a href="#0">Key Benefits Of Family Photography.</a></h5>
-                        <section class="popular__meta">
-                            <span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-                            <span class="popular__date"><span>on</span> <time datetime="2017-12-18">Dec 18, 2017</time></span>
-                        </section>
-                    </article>
-                    <article class="col-block popular__post">
-                        <a href="#0" class="popular__thumb">
-                            <img src="{% static 'images/thumbs/small/cookies-150.jpg' %}" alt="">
-                        </a>
-                        <h5><a href="#0">Absolutely No Sugar Oatmeal Cookies.</a></h5>
-                        <section class="popular__meta">
-                                <span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-                            <span class="popular__date"><span>on</span> <time datetime="2017-12-16">Dec 16, 2017</time></span>
-                        </section>
-                    </article>
-                    <article class="col-block popular__post">
-                        <a href="#0" class="popular__thumb">
-                            <img src="{% static 'images/thumbs/small/beetle-150.jpg' %}" alt="">
-                        </a>
-                        <h5><a href="#0">Throwback To The Good Old Days.</a></h5>
-                        <section class="popular__meta">
-                            <span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-                            <span class="popular__date"><span>on</span> <time datetime="2017-12-16">Dec 16, 2017</time></span>
-                        </section>
-                    </article>
-                    <article class="col-block popular__post">
-                        <a href="#0" class="popular__thumb">
-                            <img src="{% static 'images/thumbs/small/tulips-150.jpg' %}" alt="">
-                        </a>
-                        <h5><a href="#0">10 Interesting Facts About Caffeine.</a></h5>
-                        <section class="popular__meta">
-                            <span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-                            <span class="popular__date"><span>on</span> <time datetime="2017-12-14">Dec 14, 2017</time></span>
-                        </section>
-                    </article>
-                    <article class="col-block popular__post">
-                        <a href="#0" class="popular__thumb">
-                            <img src="{% static 'images/thumbs/small/salad-150.jpg' %}" alt="">
-                        </a>
-                        <h5><a href="#0">Healthy Mediterranean Salad Recipes</a></h5>
-                        <section class="popular__meta">
-                            <span class="popular__author"><span>By</span> <a href="#0"> John Doe</a></span>
-                            <span class="popular__date"><span>on</span> <time datetime="2017-12-12">Dec 12, 2017</time></span>
-                        </section>
-                    </article>
-                </div> <!-- end popular_posts -->
-            </div> <!-- end popular -->
-            </div> <!-- end popular -->
-            
-            
-
-        </div> <!-- end row -->
 
 
 
     <!-- s-footer
     ================================================== -->
     <footer class="s-footer" style="background-color: #000000;">
-
-        
         <div class="s-footer__bottom">
             <div class="row">
                 <div class="col-full">
@@ -513,18 +483,7 @@
     </footer> <!-- end s-footer -->
 
 
-    <!-- preloader
-    ================================================== -->
-         <div id="loader">
-            <div class="line-scale">
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-                <div></div>
-            </div>
-        </div>
-    </div>
+    
 
 
     <!-- Java Script
@@ -537,6 +496,3 @@
 
 </html>
 
-</body>
-
-</html>

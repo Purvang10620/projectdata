@@ -1,0 +1,18 @@
+<div class=" end subscribe">
+                        
+    <h4>Subscribe</h4>
+
+    <p>Subscribe with your email address to receive news and updates.</p>
+
+    <div class="subscribe-form">
+        <form id="mc-form" class="group" action="add_subscriber" method="post">
+        	{% csrf_token %}
+            <input type="email" value="" name="EMAIL" class="email" id="mc-email" placeholder="Email Address" required="">
+            <input type="hidden" value="{{ bid.blogAuthor }}" name="name" class="name" id="mc-name" >
+            <button type="submit">Subscribe</button>
+
+            
+
+        </form>
+    </div>
+</div> <!-- end s-footer__subscribe -->

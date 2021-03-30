@@ -6,8 +6,6 @@ $('#addarticle').click(function(){
     $('.main-content').load('addarticle');
 })
 
-
-
 $('#logout').click(function(){
     $('.top').load('logout');
 })

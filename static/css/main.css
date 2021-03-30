@@ -138,8 +138,9 @@ p.lead {
    font-family: "metropolis-medium", sans-serif;
    font-size: 2rem;
    line-height: 1.8;
-   margin-bottom: 3.6rem;
+   
    color: #000000;
+   margin-top: 60px;
 }
 
 @media only screen and (max-width:800px) {
@@ -4210,4 +4211,30 @@ footer h4::after {
    border: 1px solid transparent;
    border-radius: .25rem;
 }
-
+.details_main{
+   width: 100%;
+   background-color: #f2f2f2;
+}
+.blogger_popular_content {
+   width: 100%;
+}
+.blogger_popular_content article.popular__post {
+   width: 100%;
+   padding: 0;
+}
+.blogger_popular_content article a.blogger_popular_thumb {
+   position: none;
+   display: block;
+   float: left;
+}
+.blogger_popular_content article a.blogger_popular_thumb img {
+   width: 150px;
+   height: 150px;
+}
+.blogger_popular_content article div.blogger_popular_text {
+   float: left;
+   margin-left: 20px;
+}
+.blogger_popular_content article div.blogger_popular_button {
+   float: right;
+}

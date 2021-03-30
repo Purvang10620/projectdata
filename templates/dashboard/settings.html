@@ -42,14 +42,24 @@
 
             <ul class="list-unstyled navbar__sub-list js-sub-list">
                 
-                <li>
-                    
-                </li>
-                <li>
-                    <a href="#"><i class="fa fa-share"></i> Share</a>
-                </li>
+                {% for i in linkid %}
+                    <li>
+                        <a href="{{ i.sociallink }}" target="_blank">{{ i.sociallinkName }}</a>
+                    </li>
+                {% endfor%}
                 
             </ul>
+        </li>
+        <li>
+            add social links
+        </li>
+        <li>
+            <form method="post" action="sociallink">
+                {% csrf_token %}
+                <input type="text" name="sname" placeholder="social link name">
+                <input type="text" name="slink" placeholder="social link ">
+                <input type="submit" name="submit" value="Add">
+            </form>
         </li>  
     </ul>
 </nav>

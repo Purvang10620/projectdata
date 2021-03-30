@@ -7,9 +7,9 @@
 
                         <h1>Add new article.</h1>
 
-                        <form name="cForm" id="cForm" method="post" action="" >
+                        <form name="cForm" id="cForm" method="post" action="article_details" enctype="multipart/form-data">
                             <fieldset>
-
+                                {% csrf_token %}
                                 <div class="form-field">
                                     <input name="articlename" type="text" id="articlename" class="full-width" placeholder="Type Your Article Name  ">
                                     <span id="Name_error" style="color: red"></span>
@@ -21,7 +21,7 @@
                                 </div>
 
                                 <div class="form-field">
-                                    <select name="blogcatagory" id="blogcatagory" class="full-width"> 
+                                    <select name="articlecatagory" id="articlecatagory" class="full-width"> 
                                         <option>Catagories</option>                                      
                                         <option value="lifestyle">Lifestyle</option>
                                         <option value="health">Health</option>
@@ -31,7 +31,7 @@
                                         <option value="technical">Technical</option>
                                         <option value="startup">StartUp</option>
                                         <option value="photography">Photography</option>
-                                        <option value="photography">Other</option>
+                                        <option value="other">Other</option>
                                     </select>
                                 </div>
                                 <div class="form-field">
@@ -39,6 +39,15 @@
                                 </div>
                                 <div class="form-field">
                                     <input type="text" name="keyword" id="keyword" class="full-width" placeholder="keywords">
+                                </div>
+                                <div class="form-field">
+                                    <select name="articleblog" id="articleblog" class="full-width"> 
+                                          
+                                        {% for i in blogid %}                             
+                                            <option value="{{i.id}}">{{i.blogTitle}}</option>
+
+                                        {% endfor %}
+                                    </select>
                                 </div>
                                 <button type="submit" class="submit btn btn--primary full-width">Add Article</button>
                                 

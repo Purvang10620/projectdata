@@ -1,0 +1,41 @@
+{% load static %}
+<div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-full s-content__main custom_main">
+
+                        <h1>Add new article.</h1>
+
+                        <form name="cForm" id="cForm" method="post" action="article_details" enctype="multipart/form-data">
+                            <fieldset>
+                                {% csrf_token %}
+                                <div class="form-field">
+                                    <input name="articlename" type="text" id="articlename" value="{{ aid.articleName }}" class="full-width" disabled="">
+                                </div>
+                            
+                                <div class="form-field">
+                                    <textarea name="articlecontent" id="articlecontent" class="full-width" disabled="">{{ aid.article }} </textarea>
+                                </div>
+
+                                <div class="form-field">
+                                    <input type="text" value="{{aid.articleCatagories}}" class="full-width" disabled="">
+                                </div>
+                                <div class="form-field">
+                                    <label>Image</label> 
+                                    <img src="{{aid.articleImage.url}}" alt="" style="margin-left: 0px;">   
+                                </div>
+
+                                <div class="form-field">
+                                    <input type="text" name="keyword" id="keyword" class="full-width" value="{{aid.articleKeyword}}" disabled="">
+                                </div>
+                                <div class="form-field">
+                                    <input type="text"  class="full-width" value="{{aid.blogAssociated}}" disabled="">
+                                </div>
+                                
+                            </fieldset>
+                        </form> <!-- end form -->
+                    </div>
+                </div>
+            </div>
+        </div>
