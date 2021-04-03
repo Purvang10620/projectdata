@@ -157,7 +157,7 @@
 
                         <h3 class="h2">Add Comment</h3>
 
-                        <form name="contactForm" id="contactForm" method="post" action="">
+                        <form name="contactForm" id="contactForm" method="post" action="add_comment">
                             {% csrf_token %}
                             <fieldset>
 
@@ -165,14 +165,11 @@
                                         <input name="cName" type="text" id="cName" class="full-width" placeholder="Your Name" value="" required="">
                                 </div>
 
-                                <div class="form-field">
-                                        <input name="cEmail" type="text" id="cEmail" class="full-width" placeholder="Your Email" value="" required="">
-                                </div>
-
-                                
-
                                 <div class="message form-field">
                                     <textarea name="cMessage" id="cMessage" class="full-width" placeholder="Your Message" required=""></textarea>
+                                </div>
+                                <div class="form-field">
+                                        <input name="cOn" type="hidden"  class="full-width" value="{{ bid.blogTitle }}">
                                 </div>
 
                                 <button type="submit" class="submit btn--primary btn--large full-width">Submit</button>

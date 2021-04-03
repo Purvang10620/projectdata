@@ -45,22 +45,8 @@
                             <a class="js-arrow" href="main" id="main">
                                 Dashboard</a>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                Article</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                {% for i in articleid %}                             
-                                    <li>
-                                        <a href="viewarticle" class="view_article" data-article="{{i.id}}">{{i.articleName}}</a>
-                                    </li>
-                                {% endfor %}
-                                
-                                <li>
-                                    <a href="addarticle" id="addarticle"><i class="fa fa-plus" style="margin:0"></i> Add Article</a>
-                                </li>
-                            </ul>
-                        </li>
                         
+                        <!-- 
                         <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 Marketing</a>
@@ -75,15 +61,12 @@
                                     <a href="#"><i class="fa fa-link"></i> URL Builder</a>
                                 </li>
                             </ul>
-                        </li>
+                        </li> -->
                         <li>
                             <a class="js-arrow" href="createblog" id="createblog" >
                                 Blog</a>
                         </li>
-                        <li>
-                            <a class="js-arrow" href="#" id="setting">
-                                Settings</a>
-                        </li>
+                        
                         <li>
                             <a class="js-arrow" href="#" data-toggle="modal" data-target="#mymodal">
                                 Help</a>
@@ -96,9 +79,6 @@
 
                                     <i class="fa fa-user"></i>{{request.user}}
                                 </li>
-                                
-                                    <li><a href="logout" id="logout" title="">Logout</a></li>
-                                
                                 
                             </ul>
                         </li>

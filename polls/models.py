@@ -39,7 +39,6 @@ class articleDetail(models.Model):
 	article=models.TextField()
 	articleCatagories=models.CharField(max_length=100)
 	articleImage=models.ImageField(upload_to="profiles")
-	articleKeyword=models.CharField(max_length=200)
 	articleAuthor=models.ForeignKey(User,on_delete=models.CASCADE,default=None)
 	blogAssociated=models.ForeignKey(blogDetails,on_delete=models.CASCADE,default=None)
 	articleDate=models.DateField(default=timezone.now)
@@ -57,7 +56,7 @@ class userSociallink(models.Model):
 
 class comment(models.Model):
 	commentBy=models.CharField(max_length=100)
-	commentbyEmail=models.CharField(max_length=100)
+	
 	commentMsg=models.CharField(max_length=200)
 	commentDate=models.DateField(default=timezone.now)
 	commentOn=models.ForeignKey(blogDetails,on_delete=models.CASCADE,default=None)

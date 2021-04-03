@@ -10,6 +10,7 @@ from django.conf import settings as conf_settings
 from django.contrib.auth.forms import PasswordChangeForm
 from django.core.mail import send_mail
 from django.core.files.storage import FileSystemStorage
+from django.db.models import Q
 
 
 # Create your views here.
@@ -56,7 +57,9 @@ def index6(request):
 		title=request.GET["blogtitle"]
 		bid=blogDetails.objects.get(blogTitle=title)
 		aid=articleDetail.objects.get(blogAssociated=bid)
-		return render(request,"main/single-audio.html" ,{"aid": aid ,"bid":bid})
+		com=comment.objects.filter(commentOn=bid)
+		comno=comment.objects.filter(commentOn=bid).count()
+		return render(request,"main/single-audio.html" ,{"aid": aid ,"bid":bid,"com":com ,"comno":comno})
 	else:
 		return render(request=request,template_name="main/single-audio.html")
 
@@ -65,7 +68,9 @@ def index7(request):
 		title=request.GET["blogtitle"]
 		bid=blogDetails.objects.get(blogTitle=title)
 		aid=articleDetail.objects.get(blogAssociated=bid)
-		return render(request,"main/single-gallery.html" ,{"aid": aid ,"bid":bid})
+		com=comment.objects.filter(commentOn=bid)
+		comno=comment.objects.filter(commentOn=bid).count()
+		return render(request,"main/single-gallery.html" ,{"aid": aid ,"bid":bid,"com":com ,"comno":comno})
 	else:
 		return render(request=request,template_name="main/single-gallery.html")
 
@@ -75,8 +80,8 @@ def index8(request):
 		bid=blogDetails.objects.get(blogTitle=title)
 		aid=articleDetail.objects.filter(blogAssociated=bid)
 		com=comment.objects.filter(commentOn=bid)
-		comno=comment.objects.filter(commentOn=blog).count()
-		return render(request,"main/single-standard.html" ,{"aid": aid ,"bid":bid ,"com":com})
+		comno=comment.objects.filter(commentOn=bid).count()
+		return render(request,"main/single-standard.html" ,{"aid": aid ,"bid":bid ,"com":com,"comno":comno})
 	else:
 		return render(request=request,template_name="main/single-standard.html")
 
@@ -91,9 +96,11 @@ def index8(request):
 def add_subscriber(request):
 	subEmail=request.POST["EMAIL"]
 	subTo=request.POST["name"]
+	id=User.objects.get(username=subTo)
+	bid=blogDetails.objects.get(blogAuthor=id)
 	subData=userSubscriber(subscriber=subEmail,subscribeTo=subTo)
 	subData.save()
-	return redirect('')
+	return redirect(f"/{bid.template.templatename}?blogtitle={bid.blogTitle}")
 
 
 def index9(request):
@@ -101,7 +108,9 @@ def index9(request):
 		title=request.GET["blogtitle"]
 		bid=blogDetails.objects.get(blogTitle=title)
 		aid=articleDetail.objects.get(blogAssociated=bid)
-		return render(request,"main/single-video.html" ,{"aid": aid ,"bid":bid})
+		com=comment.objects.filter(commentOn=bid)
+		comno=comment.objects.filter(commentOn=bid).count()
+		return render(request,"main/single-video.html" ,{"aid": aid ,"bid":bid,"com":com ,"comno":comno})
 	else:
 		return render(request=request,template_name="main/single-video.html")
 
@@ -138,6 +147,17 @@ def dashboard(request):
 def main(request):
 	return render(request=request,template_name="dashboard/main.html")
 
+def add_comment(request):
+	cname=request.POST["cName"]
+	
+	cmessage=request.POST["cMessage"]
+	con=request.POST["cOn"]
+	bid=blogDetails.objects.get(blogTitle=con)
+	comm=comment(commentBy=cname,commentMsg=cmessage,commentOn=bid)
+	comm.save()
+	return redirect(f"/{bid.template.templatename}?blogtitle={bid.blogTitle}")
+
+
 def add_article(request):
 	author=request.user
 	blogid=blogDetails.objects.filter(blogAuthor=author)
@@ -154,11 +174,10 @@ def article_details(request):
 	articlecontent=request.POST["articlecontent"]
 	articlecatagory=request.POST["articlecatagory"]
 	image=request.FILES['articleimage']
-	keyword=request.POST["keyword"]
 	articleauthor=request.user
 	articleblog=request.POST["articleblog"]
 	blognameid=blogDetails.objects.get(id=articleblog)
-	articles=articleDetail(articleName=articlename,article=articlecontent,articleCatagories=articlecatagory,articleImage=image,articleKeyword=keyword,articleAuthor=articleauthor,blogAssociated=blognameid)
+	articles=articleDetail(articleName=articlename,article=articlecontent,articleCatagories=articlecatagory,articleImage=image,articleAuthor=articleauthor,blogAssociated=blognameid)
 	articles.save()
 	return redirect('/myaccount')
 
@@ -316,3 +335,9 @@ def templateImage(request):
 	page = template_paginator.get_page(page_num)
 
 	return render(request,"main/template.html" ,{"page": page})
+
+def search(request):
+	query=request.GET['s']
+	blog=blogDetails.objects.filter( Q(blogTitle__icontains=query) | Q(blogCatagories= query) )
+	article=articleDetail.objects.filter(articleName__icontains=query)
+	return render(request, 'main/search.html',{"blog": blog ,"article": article})

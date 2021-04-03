@@ -12,7 +12,10 @@ class blogdetails(admin.ModelAdmin):
 	list_display = ['blogName','blogTitle','blogCatagories','blogAuthor','template','blogDate']
 
 class articledetails(admin.ModelAdmin):
-	list_display = ['articleName','article','articleCatagories','articleImage','articleKeyword','articleAuthor','blogAssociated','articleDate']
+	list_display = ['articleName','article','articleCatagories','articleImage','articleAuthor','blogAssociated','articleDate']
+
+class commentsdetails(admin.ModelAdmin):
+	list_display = ['commentBy','commentMsg','commentDate','commentOn']
 
 admin.site.register(Profile)
 admin.site.register(dataForward , Contactus )
@@ -20,6 +23,6 @@ admin.site.register(blogTemplate , templatedetails )
 admin.site.register(blogDetails , blogdetails)
 admin.site.register(articleDetail , articledetails)
 admin.site.register(userSociallink)
-admin.site.register(comment)
+admin.site.register(comment , commentsdetails)
 admin.site.register(userSubscriber)
 

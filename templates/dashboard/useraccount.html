@@ -55,7 +55,9 @@
                                     </li>
                                 {% endfor %}
                                 
-                                
+                                <li>
+                                    <a href="#" >Delete Article</a>
+                                </li>
                                 <li>
                                     <a href="addarticle" id="addarticle"><i class="fa fa-plus" style="margin:0"></i> Add Article</a>
                                 </li>
@@ -86,20 +88,8 @@
                             <a class="js-arrow" href="#" data-toggle="modal" data-target="#mymodal">
                                 Help</a>
                         </li>
-                        <li class="has-sub">
-                            <a class="js-arrow" href="#">
-                                Account</a>
-                            <ul class="list-unstyled navbar__sub-list js-sub-list">
-                                <li>
-
-                                    <i class="fa fa-user"></i>{{request.user}}
-                                </li>
-                                
-                                <li><a href="logout" id="logout" title="">Logout</a></li>
-                                
-                                
-                            </ul>
-                        </li>
+                        
+                        <li><a href="" id="back" title="">Your Blogs</a></li>
                     </ul>
                     
                 </nav>
@@ -319,6 +309,9 @@
             var articleId = $(this).data('article');
             $('.main-content').load('viewarticle?articleId='+articleId);
         }) 
+        $('#back').click(function(){
+            window.location = 'userblogdetail';
+        })
     </script>
 
 </body>

@@ -61,6 +61,8 @@ urlpatterns = [
     #path("change_password",view.change_password,name="change_password")
     #path("forget",views.index12,name="forget"),
     path("contactInfoData",views.dataSend,name="contactInfoData"),
+    path("search",views.search,name="search"),
+    path("add_comment",views.add_comment,name="add_comment"),
     path("reset_password/",
         auth_views.PasswordResetView.as_view(template_name="main/forget-password.html"),
         name="reset_password"),
