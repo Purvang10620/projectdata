@@ -1,15 +1,17 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils import timezone
+from phone_field import PhoneField
 # Create your models here.
 
-class Profile(models.Model):
-	email=models.CharField(max_length=50)
-	name=models.CharField(max_length=50)
-	gender=models.CharField(max_length=50)
-	country=models.CharField(max_length=50)
-	city=models.CharField(max_length=50)
-	phone=models.BigIntegerField()
+class userProfile(models.Model):
+	username=models.OneToOneField(User,on_delete=models.CASCADE)
+	city=models.CharField(max_length=100,blank=True)
+	country=models.CharField(max_length=100,blank=True)
+	phone=models.CharField(max_length=10,blank=True)
+	profilepic=models.ImageField(upload_to="profiles",blank=True)
+
+
 
 class dataForward(models.Model):
 	yourname=models.CharField(max_length=50)
@@ -25,9 +27,9 @@ class blogTemplate(models.Model):
 		return self.templatename
 
 class blogDetails(models.Model):
-	blogName=models.CharField(max_length=200)
 	blogTitle=models.CharField(max_length=200)
 	blogCatagories=models.CharField(max_length=100)
+	blogProfile=models.ImageField(upload_to="profiles",blank=True)
 	blogAuthor=models.ForeignKey(User,on_delete=models.CASCADE,default=None)
 	template=models.ForeignKey(blogTemplate,on_delete=models.CASCADE,default=None)
 	blogDate=models.DateField(default=timezone.now)
@@ -67,9 +69,21 @@ class comment(models.Model):
 class userSubscriber(models.Model):
 	subscriber=models.CharField(max_length=200)
 	subscribeTo=models.CharField(max_length=100)
+	AddOn=models.DateField(default=timezone.now)
 
 	def __str__(self):
 		return self.subscriber
 
-
+class categories(models.Model):
+	cat_name=models.CharField(max_length=100)
 	
+	def __str__(self):
+		return self.cat_name
+
+class ReportedBlog(models.Model):
+	report=models.CharField(max_length=200)
+	optional=models.TextField(blank=True)
+	reportedBlog=models.CharField(max_length=200)
+
+	def __str__(self):
+		return self.report

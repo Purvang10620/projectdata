@@ -11,7 +11,7 @@
     <meta name="keywords" content="au theme template">
 
     <!-- Title Page-->
-    <title>Blogbook-Myaccount</title>
+    <title>Myaccount- Blogbook</title>
 
     
     <!-- Fontfaces CSS-->
@@ -26,7 +26,11 @@
 
     <!-- Main CSS-->
     <link href="{% static 'css/design.css' %}" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="{% static 'css/theme.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+
+    <link rel="shortcut icon" href="{% static 'images/B.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/B.png' %}" type="image/x-icon">
 
 </head>
 
@@ -42,7 +46,7 @@
                 <nav class="navbar-sidebar">
                     <ul class="list-unstyled navbar__list">
                         <li class="active">
-                            <a class="js-arrow" href="main" id="main">
+                            <a class="js-arrow" href="#" id="">
                                 Dashboard</a>
                         </li>
                         <li class="has-sub">
@@ -56,20 +60,17 @@
                                 {% endfor %}
                                 
                                 <li>
-                                    <a href="#" >Delete Article</a>
-                                </li>
-                                <li>
                                     <a href="addarticle" id="addarticle"><i class="fa fa-plus" style="margin:0"></i> Add Article</a>
                                 </li>
                             </ul>
                         </li>
                         
-                        <li class="has-sub">
+                        <!-- <li class="has-sub">
                             <a class="js-arrow" href="#">
                                 Marketing</a>
                             <ul class="list-unstyled navbar__sub-list js-sub-list">
                                 <li>
-                                    <a href="#"><i class="fab fa-instagram"></i> Instagram Stories</a>
+                                    <a href="#"><i class="fa fa-instagram"></i> Instagram Stories</a>
                                 </li>
                                 <li>
                                     <a href="#"><i class="fa fa-share"></i> Share</a>
@@ -78,8 +79,9 @@
                                     <a href="#"><i class="fa fa-link"></i> URL Builder</a>
                                 </li>
                             </ul>
-                        </li>
-                        
+                        </li> -->
+                       
+                            
                         <li>
                             <a class="js-arrow" href="#" id="setting">
                                 Settings</a>
@@ -185,21 +187,34 @@
                                     </div> -->
                                     <div class="noti__item js-item-menu">
                                         <i class="fa fa-bell"></i>
-                                        <span class="quantity">3</span>
+                                        <span class="quantity">{{result.count |add:comm.count}}</span>
                                         <div class="notifi-dropdown js-dropdown">
                                             <div class="notifi__title">
-                                                <p>You have 3 Notifications</p>
+                                                <p>You have {{result.count |add:comm.count}} Notifications</p>
                                             </div>
+                                            {% for r in result %}
                                             <div class="notifi__item">
                                                 <div class="bg-c1 img-cir img-40">
-                                                    <i class="fa fa-envelope-open"></i>
+                                                    <i class="fa fa-user"></i>
                                                 </div>
                                                 <div class="content">
-                                                    <p>You got a email notification</p>
-                                                    <span class="date">April 12, 2018 06:50</span>
+                                                    <p>New Subscriber added {{r.subscriber}}</p>
+                                                    <span class="date">{{ r.AddOn}}</span>
                                                 </div>
                                             </div>
+                                            {% endfor%}
+                                            {% for r in comm %}
                                             <div class="notifi__item">
+                                                <div class="bg-c1 img-cir img-40">
+                                                    <i class="fa fa-comments"></i>
+                                                </div>
+                                                <div class="content">
+                                                    <p>{{r.commentBy}} has commented on {{ r.commentOn}}</p>
+                                                    <span class="date">{{ r.commentDate}}</span>
+                                                </div>
+                                            </div>
+                                            {% endfor%}
+                                            <!-- <div class="notifi__item">
                                                 <div class="bg-c2 img-cir img-40">
                                                     <i class="fa fa-user"></i>
                                                 </div>
@@ -216,10 +231,10 @@
                                                     <p>You got a new file</p>
                                                     <span class="date">April 12, 2018 06:50</span>
                                                 </div>
-                                            </div>
-                                            <div class="notifi__footer">
+                                            </div> -->
+                                            <!-- <div class="notifi__footer">
                                                 <a href="#">All notifications</a>
-                                            </div>
+                                            </div> -->
                                         </div>
                                     </div>
                                 </div>
@@ -243,7 +258,7 @@
     </div>
     <!-- model -->
     <div class="modal fade" id="mymodal" role="dialog">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-lg">
     
             <!-- Modal content-->
             <div class="modal-content">
@@ -303,8 +318,10 @@
     <!-- Main JS-->
     <script src="{% static 'js/main-dashboard.js' %}"></script>
     <script src="{% static 'js/custom.js' %}"></script>
+
     <script type="text/javascript">
         $('.main-content').load('profile');
+        
         $('.view_article').click(function(){
             var articleId = $(this).data('article');
             $('.main-content').load('viewarticle?articleId='+articleId);
@@ -313,8 +330,8 @@
             window.location = 'userblogdetail';
         })
     </script>
-
+    
 </body>
-
+    
 </html>
 <!-- end document-->

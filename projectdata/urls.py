@@ -19,9 +19,16 @@ from django.urls import path
 from polls import views
 from django.conf import settings
 from django.conf.urls.static import static
+from django.conf.urls import include
 app_name="main"
 
+admin.site.site_header = " BlogBook Admin"
+admin.site.site_title = "BlogBook Site Admin"
+
+
+
 urlpatterns = [
+    path('grappelli/', include('grappelli.urls')),
     path('admin/', admin.site.urls),
     path("home",views.index,name="index"),
     path("about",views.index1,name="about"),
@@ -33,8 +40,9 @@ urlpatterns = [
     path("logout",views.handlelogout,name="logout"),
     path("signup",views.index5,name="signup"),
     path("solo",views.solo_templete,name="solo_templete"),
-
-
+    # path("add_tag",views.add_tag,name="add_tag"),
+    # path("tagDetails",views.tagDetails,name="tagDetails"),
+    # path("tagResults",views.tagResults,name="tagResults"),
     
     path("add_subscriber",views.add_subscriber,name="add_subscriber"),
 
@@ -48,18 +56,29 @@ urlpatterns = [
     path("userdashboard",views.dashboard,name="dashboard"),
     path("myaccount",views.useraccount,name="useraccount"),
     path("sociallink",views.sociallink,name="sociallink"),
-    path("main",views.main,name="main"),
+    # path("main",views.main,name="main"),
     path("addarticle",views.add_article,name="addarticle"),
     path("profile",views.profile,name="profile"),
     path("editprofile",views.editprofile,name="editprofile"),
-    path("profile_add",views.profile_add,name="profile_add"),
+    path("updateprofile",views.updateprofile,name="updateprofile"),
+    
+    # path("profile_add",views.profile_add,name="profile_add"),
     path("settings",views.settings,name="settings"),
     path("sidebar",views.sidebar,name="sidebar"),
     path("template",views.templateImage,name="template"),
+    path("report",views.report,name="report"),
+    path("report_details",views.report_details,name="report_details"),
+
     path("blog_add",views.blog_add,name="blog_add"),
+    path("blog_edit",views.edit_blog,name="blog_edit"),
+    path("update_blog",views.update_blog,name="update_blog"),
+    path("del/<int:id>",views.delete,name="delete"),
+
     path("viewarticle",views.viewarticle,name="viewarticle"),
-    #path("change_password",view.change_password,name="change_password")
-    #path("forget",views.index12,name="forget"),
+    path("edit_article",views.edit_article,name="edit_article"),
+    path("update_article",views.update_article,name="update_article"),
+    path("delArticle/<int:id>",views.deleteArticle,name="deleteArticle"),
+
     path("contactInfoData",views.dataSend,name="contactInfoData"),
     path("search",views.search,name="search"),
     path("add_comment",views.add_comment,name="add_comment"),

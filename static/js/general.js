@@ -52,6 +52,8 @@ function validate1(){
 function validateBlog(){
   var blogname=document.cForm.blogname.value;
   var title=document.cForm.title.value;
+ 
+
   if(blogname==""){
     document.getElementById("blogname").style.borderBottom="2px solid red";
     document.getElementById("Name_error").innerHTML="This is required field";
@@ -62,6 +64,14 @@ function validateBlog(){
     document.getElementById("title").style.borderBottom="2px solid red";
     document.getElementById("title_error").innerHTML="This is required field";
     document.getElementById("title").style.marginBottom="5px";
+    return false;
+  }
+
+  if(document.cForm.blogcatagory.selectedIndex=="" || document.cForm.blogcatagory.selectedIndex==0){
+    /*alert("Enter field");*/
+    document.getElementById("blogcatagory").style.borderBottom="2px solid red";
+    document.getElementById("catagory_error").innerHTML="This is required field";
+    document.getElementById("blogcatagory").style.marginBottom="5px";
     return false;
   }
 

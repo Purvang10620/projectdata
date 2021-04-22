@@ -21,6 +21,7 @@
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
     <!-- script
     ================================================== -->
     <script src="{% static 'js/modernizr.js ' %}"></script>
@@ -134,10 +135,9 @@
                 </p>
 
                 {% else %}
-                    {% for i in aid %}
+                    {% for i in aid %} 
                     <p class="lead">{{ i.articleName }}</p>
                     <p class="addReadMore showlesscontent">{{ i.article }}  </p>
-
                     <p>
                 <img src="{{ i.articleImage.url }}" sizes="(max-width: 2000px) 100vw, 2000px" alt="">
                 </p>
@@ -182,22 +182,14 @@
                 </ul>
 
                 <p>Odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum. Nulla vitae elit libero, a pharetra augue laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed.</p> -->
-
-                <p class="s-content__tags">
-                    <span>Post Tags</span>
-
-                    <span class="s-content__tag-list">
-                        <a href="#0">orci</a>
-                        <a href="#0">lectus</a>
-                        <a href="#0">varius</a>
-                        <a href="#0">turpis</a>
-                    </span>
-                </p> <!-- end s-content__tags -->
+            </div>
+                
+                
 
                 {% if bid is null %}
 
                 <div class="s-content__author">
-                    <img src="{% static 'images/avatars/user-03.jpg' %}" alt="">
+                    
 
                     <div class="s-content__author-about">
                         <h4 class="s-content__author-name">
@@ -218,13 +210,15 @@
 
                 {% else %}
                 <div class="s-content__author">
+                    
+
                     <h4 class="s-content__author-name">
                             About author
                         </h4>
-
+                        
                     <div class="s-content__author-about">
                         <h4 class="s-content__author-name">
-                            <a href="#0">{{ bid.blogAuthor }}</a>
+                            <a href="#0">{{ bid.blogAuthor.first_name }} {{ bid.blogAuthor.last_name }}</a>
                         </h4>
                     
                         <p>
@@ -311,7 +305,7 @@
     <script type="text/javascript">
         function AddReadMore() {
         //This limit you can set after how much characters you want to show Read More.
-        var carLmt = 200;
+        var carLmt = 300;
         // Text to show when text is collapsed
         var readMoreTxt = " ... Read More";
         // Text to show when text is expanded

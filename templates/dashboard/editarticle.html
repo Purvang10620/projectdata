@@ -1,0 +1,58 @@
+{% load static %}
+<div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="col-full s-content__main custom_main">
+
+                        <h1>Update article.</h1>
+
+                        <form name="cForm" id="cForm" method="post" action="update_article" enctype="multipart/form-data">
+                            <fieldset>
+                                {% csrf_token %}
+                                <input type="hidden" name="id" value="{{ aid.id }}">
+                                <div class="form-field">
+                                    <input name="articlename" type="text" id="articlename" value="{{ aid.articleName }}" class="full-width">
+                                </div>
+                            
+                                <div class="form-field">
+                                    <textarea name="articlecontent" id="articlecontent" class="full-width">{{ aid.article }} </textarea>
+                                </div>
+
+                                <div class="form-field">
+                                    <select name="articlecatagory" id="articlecatagory" class="full-width"> 
+                                        <option>Catagories</option>                                      
+                                        {% for i in cat %}
+                                        <option value="{{ i.cat_name }}" {% if i.cat_name == aid.articleCatagories %} selected="selected" {% endif %}>{{ i.cat_name }}</option>
+                                        
+                                        <!-- <option value="lifestyle">Lifestyle</option>
+                                        <option value="health">Health</option>
+                                        <option value="family">Family</option>
+                                        <option value="corporate">Corporate</option>
+                                        <option value="travel">Travel</option>
+                                        <option value="technical">Technical</option>
+                                        <option value="startup">StartUp</option>
+                                        <option value="photography">Photography</option>
+                                        <option value="Other">Other</option> -->
+                                        {% endfor %}
+                                    </select>
+                                    
+                                </div>
+                                <div class="form-field">
+                                    <label>Image</label> 
+                                    <input type="file" name="articleimage"  id="articleimage" class="full-width" accept="image/x-png,image/gif,image/jpeg"/>
+                                    <img src="{{aid.articleImage.url}}" alt="" style="margin-left: 0px;">   
+                                </div>
+
+                                <div class="form-field">
+                                    <input type="text"  class="full-width" value="{{aid.blogAssociated}}" disabled="">
+                                </div>
+                                <button type="submit" class="submit btn btn--primary" onclick="">Update Article</button>
+                                
+                            </fieldset>
+                        </form> <!-- end form -->
+                        
+                    </div>
+                </div>
+            </div>
+        </div>

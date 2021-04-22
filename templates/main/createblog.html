@@ -9,13 +9,11 @@
                     <h1>Create New Blog Here.</h1>
                     
                     
-                    <form name="cForm" id="cForm" method="post" action="blog_add" onsubmit="return validateBlog()">
+                    <form name="cForm" id="cForm" method="post" action="blog_add" onsubmit="return validateBlog()" enctype="multipart/form-data">
+                    {% csrf_token %}
                     <fieldset>
-                        {% csrf_token %}
-                        <div class="form-field">
-                            <input name="blogname" type="text" id="blogname" class="full-width" placeholder="Type Your Blog Name (Ex: BlogBook.com/... ) ">
-                            <span id="Name_error" style="color: red"></span>
-                        </div>
+
+                        
                     
                         <div class="form-field">
                             <input name="title" type="text" id="title" class="full-width" placeholder="Type Title">
@@ -23,9 +21,16 @@
                         </div>
 
                         <div class="form-field">
+                                    <label>Upload Profile image</label>    <input type="file" name="profileImg" id="profileImg" class="full-width" accept="image/x-png,image/gif,image/jpeg"/>
+                                </div>
+                        <div class="form-field">
+                            
                             <select name="blogcatagory" id="blogcatagory" class="full-width"> 
-                                <option>Catagories</option>                                      
-                                <option value="lifestyle">Lifestyle</option>
+                                <option>Catagories</option>  
+                                 {% for i in cat %}
+                                <option value="{{ i.cat_name }}">{{ i.cat_name }}</option>
+                                
+                                <!-- <option value="lifestyle">Lifestyle</option>
                                 <option value="health">Health</option>
                                 <option value="family">Family</option>
                                 <option value="corporate">Corporate</option>
@@ -33,8 +38,10 @@
                                 <option value="technical">Technical</option>
                                 <option value="startup">StartUp</option>
                                 <option value="photography">Photography</option>
-                                <option value="Other">Other</option>
+                                <option value="Other">Other</option> -->
+                                {% endfor %}
                             </select>
+                            <span id="catagory_error" style="color: red"></span>
                         </div>
                         <input type="hidden" name="template" value="{{request.GET.template}}">
                         <button type="submit" class="submit btn btn--primary full-width">Submit</button>

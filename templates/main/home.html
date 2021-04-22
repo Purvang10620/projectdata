@@ -30,6 +30,8 @@
     ================================================== -->
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/B.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/B.png' %}" type="image/x-icon">
 
 </head>
 
@@ -65,40 +67,6 @@
             <div class="masonry">
 
                 <div class="grid-sizer"></div>
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-                        
-                    <div class="entry__thumb">
-                        <a href="single-standard" class="entry__thumb-link">
-                            <img src="{% static 'images/thumbs/masonry/lamp-400.jpg' %}" 
-                                     alt="">
-                        </a>
-                    </div>
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-standard">December 15, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard">Just a Standard Format Post.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category">Design</a> 
-                                <a href="category">Photography</a>
-                            </span>
-                        </div>
-                    </div>
-    
-                </article> <!-- end article -->
-
                 <article class="masonry__brick entry format-quote" data-aos="fade-up">
                         
                     <div class="entry__thumb">
@@ -110,12 +78,12 @@
                     </div>   
     
                 </article> <!-- end article -->
-
+                {% for a in article %}
                 <article class="masonry__brick entry format-standard" data-aos="fade-up">
                         
                     <div class="entry__thumb">
-                        <a href="single-standard" class="entry__thumb-link">
-                            <img src="{% static 'images/thumbs/masonry/tulips-400.jpg' %}" 
+                        <a href="{{ a.template.templatename }}?blogtitle={{ a.blogTitle }}" class="entry__thumb-link">
+                            <img src="{{ a.blogProfile.url }}" 
                                      alt="">
                         </a>
                     </div>
@@ -124,200 +92,26 @@
                         <div class="entry__header">
                             
                             <div class="entry__date">
-                                <a href="single-standard">December 15, 2017</a>
+                                <a href="#">{{ a.blogDate }}</a>
                             </div>
-                            <h1 class="entry__title"><a href="single-standard">10 Interesting Facts About Caffeine.</a></h1>
+                            <h1 class="entry__title"><a href="{{ a.template.templatename }}?blogtitle={{ a.blogTitle }}">{{ a.blogTitle }}</a></h1>
                             
                         </div>
-                        <div class="entry__excerpt">
+                        <!-- <div class="entry__excerpt">
                             <p>
                                 Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
                             </p>
-                        </div>
+                        </div> -->
                         <div class="entry__meta">
                             <span class="entry__meta-links">
-                                <a href="category">Health</a>
+                                <a href="category?cat={{a.blogCatagories}}">{{a.blogCatagories}}</a> 
                             </span>
                         </div>
                     </div>
     
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <a href="single-standard" class="entry__thumb-link">
-                            <img src="{% static 'images/thumbs/masonry/cookies-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-standard">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard">No Sugar Oatmeal Cookies.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category">Cooking</a>
-                                <a href="category">Health</a>
-                            </span>
-                        </div>
-                    </div>
-    
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <a href="single-standard" class="entry__thumb-link">
-                            <img src="{% static 'images/thumbs/masonry/wheel-400.jpg' %}" 
-                                     alt="">
-                        </a>
-                    </div>
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-standard">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard">Visiting Theme Parks Improves Your Health.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category">Health</a> 
-                                <a href="category">Lifestyle</a>
-                            </span>
-                        </div>
-                    </div>
-    
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-video" data-aos="fade-up">
-                        
-                    <div class="entry__thumb video-image">
-                        <a href="https://player.vimeo.com/video/117310401?color=01aef0&title=0&byline=0&portrait=0" data-lity>
-                            <img src="{% static 'images/thumbs/masonry/shutterbug-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-video">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-video">Key Benefits Of Family Photography.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category">Family</a> 
-                                <a href="category">Photography</a>
-                            </span>
-                        </div>
-                    </div>
-    
-                </article> <!-- end article -->
-
-
-                <article class="masonry__brick entry format-gallery" data-aos="fade-up">
-                        
-                    <div class="entry__thumb slider">
-                        <div class="slider__slides">
-                            <div class="slider__slide">
-                                <img src="{% static 'images/thumbs/masonry/gallery/gallery-1-400.jpg' %}" alt=""> 
-                            </div>
-                            <div class="slider__slide">
-                                <img src="{% static 'images/thumbs/masonry/gallery/gallery-2-400.jpg' %}" alt=""> 
-                            </div>
-                            <div class="slider__slide">
-                                <img src="{% static 'images/thumbs/masonry/gallery/gallery-3-400.jpg' %}" 
-                                        alt="">  
-                            </div>
-                        </div>
-                    </div>
-    
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-gallery">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-gallery">Workspace Design Trends and Ideas.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category">Work</a> 
-                                <a href="category">Technical</a>
-                            </span>
-                        </div>
-                    </div>
-    
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-audio" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <a href="single-audio" class="entry__thumb-link">
-                            <img src="{% static 'images/thumbs/masonry/guitarman-400.jpg' %}" 
-                                     alt="">
-                        </a>
-                        <div class="audio-wrap">
-                            <audio id="player" src="{% static 'media/AirReview-Landmarks-02-ChasingCorporate.mp3' %}" width="100%" height="42" controls="controls"></audio>
-                        </div>
-                    </div>
-
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-audio">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-audio">What Your Music Preference Says About You and Your Personality.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category">Music</a> 
-                                <a href="category">Lifestyle</a>
-                            </span>
-                        </div>
-                    </div>
-
-                </article> <!-- end article -->
-
+                </article>
+                {% endfor %}
+                
                 <article class="masonry__brick entry format-link" data-aos="fade-up">
                     
                     <div class="entry__thumb">
@@ -328,136 +122,6 @@
                     </div>
                     
                 </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <a href="single-standard" class="entry__thumb-link">
-                            <img src="{% static 'images/thumbs/masonry/jump-400.jpg' %}" 
-                                    alt="">
-                        </a>
-                    </div>
-
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-standard">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard">Create Meaningful Family Moments.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category">Family</a>
-                                <a href="category">Relationship</a>
-                            </span>
-                        </div>
-                    </div>
-
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <a href="single-standard" class="entry__thumb-link">
-                            <img src="{% static 'images/thumbs/masonry/beetle-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-standard">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard">Throwback To The Good Old Days.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category">Lifestyle</a>
-                            </span>
-                        </div>
-                    </div>
-
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <a href="single-standard" class="entry__thumb-link">
-                            <img src="{% static 'images/thumbs/masonry/fuji-400.jpg' %}" alt="">
-                        </a>
-                    </div>
-
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-standard">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard">Just Another  Standard Format Post.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category">Design</a> 
-                                <a href="category">Photography</a>
-                            </span>
-                        </div>
-                    </div>
-
-                </article> <!-- end article -->
-
-                <article class="masonry__brick entry format-standard" data-aos="fade-up">
-
-                    <div class="entry__thumb">
-                        <a href="single-standard" class="entry__thumb-link">
-                            <img src="{% static 'images/thumbs/masonry/sydney-400.jpg' %}" 
-                                     alt="">
-                        </a>
-                    </div>
-
-                    <div class="entry__text">
-                        <div class="entry__header">
-                            
-                            <div class="entry__date">
-                                <a href="single-standard">December 10, 2017</a>
-                            </div>
-                            <h1 class="entry__title"><a href="single-standard">Planning Your First Trip to Sydney.</a></h1>
-                            
-                        </div>
-                        <div class="entry__excerpt">
-                            <p>
-                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
-                            </p>
-                        </div>
-                        <div class="entry__meta">
-                            <span class="entry__meta-links">
-                                <a href="category">Travel</a> 
-                                <a href="category">Vacation</a>
-                            </span>
-                        </div>
-                    </div>
-
-                </article> <!-- end article -->
-
             </div> <!-- end masonry -->
         </div> <!-- end masonry-wrap -->
 

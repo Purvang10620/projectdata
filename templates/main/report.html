@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+<head>
+
+    <!--- basic page needs
+    ================================================== -->
+    <meta charset="utf-8">
+    <title>Report - Blog Book</title>
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- mobile specific metas
+    ================================================== -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <!-- CSS
+    ================================================== -->
+
+    <link href="{% static 'css/fontawesome.css' %}" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link href="{% static 'css/design.css' %}" rel="stylesheet" media="all">
+    
+    <!-- script
+    ================================================== -->
+     <script src="{% static 'js/modernizr.js ' %}"></script>
+    <script src="{% static 'js/pace.min.js ' %}"></script>
+    <script src="{% static 'js/general.js ' %}"></script>
+
+    <!-- favicons
+    ================================================== -->
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/B.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/B.png' %}" type="image/x-icon">
+
+</head>
+
+<body id="top">
+
+    <section class="s-content s-content--narrow">
+
+        <div class="row">
+
+            <!-- end s-content__header -->
+    
+            <!-- <div class="s-content__media col-full">
+                <div id="map-wrap">
+                    <div id="map-container"></div>
+                    <div id="map-zoom-in"></div>
+                    <div id="map-zoom-out"></div>
+                </div> 
+            </div> -->
+
+            <div class="col-full s-content__main custom_main">
+
+                <h1>Report Blog.</h1>
+                {% for message in messages %}
+                    <div class="alert-error"  role="alert">
+                        {{message}}
+                    </div>
+                        
+                {%endfor%}
+                <form name="cForm" id="cForm" method="post" action="report_details" >
+                    {% csrf_token %}
+                    <fieldset>
+                        <div class="form-field">
+                        <input type="radio" name="reportvalue" required="" value="I don't like this">I don't like this.<br>
+                        <input type="radio" name="reportvalue" required="" value="This is hateful, racist or offensive">This is hateful, racist or offensive.<br>
+                        <input type="radio" name="reportvalue" required="" value="This is vulgar or sexually explicit">This is vulgar or sexually explicit.<br>
+                        <input type="radio" name="reportvalue" required="" value="This is harmful, dangerous or violent">This is harmful, dangerous or violent.<br>
+                        <input type="radio" name="reportvalue" required="" value="This is misleading or inaccurate">This is misleading or inaccurate.<br>
+                    </div>
+                    <div class="form-field">
+                        <textarea placeholder="Optional" name="Optional" class="full-width"></textarea>
+                    </div>
+                    <input type="hidden" name="blogName" value="{{ request.GET.blogtitle }}">
+                    <button type="submit" class="submit btn btn--primary full-width">Report</button>
+                        
+
+                    </fieldset>
+                </form> <!-- end form -->
+
+
+            </div> <!-- end s-content__main -->
+
+        </div> <!-- end row -->
+
+    </section> <!-- s-content -->
+     
+
+    
+
+
+</body>
+
+</html>

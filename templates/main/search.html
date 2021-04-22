@@ -6,7 +6,7 @@
     <!--- basic page needs
     ================================================== -->
     <meta charset="utf-8">
-    <title>Category - Blog Book</title>
+    <title>Search - Blog Book</title>
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -16,6 +16,7 @@
 
      <!-- CSS
     ================================================== -->
+    <link href="{% static 'css/fontawesome.css' %}" rel="stylesheet" media="all">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <link rel="stylesheet" href="{% static 'css/vendor.css' %}">
     <link rel="stylesheet" href="{% static 'css/main.css' %}">
@@ -29,6 +30,8 @@
     ================================================== -->
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'favicon.ico' %}" type="image/x-icon">
+    <link rel="shortcut icon" href="{% static 'images/B.png' %}" type="image/x-icon">
+    <link rel="icon" href="{% static 'images/B.png' %}" type="image/x-icon">
 
 </head>
 
@@ -55,76 +58,76 @@
         <section class="s-extra details_main">
 
         <div class="row top">
-            {% if blog and article %}
+        {% if blog|length < 1 %}
+            <p>No search results</p>
+            Your search query : <b>{{query}}</b> did not match any documents. <br>
+            Suggestions:
+            <ul>
+                <li>Make sure that all words are spelled correctly.</li>
+                <li>Try more general keywords.</li>
+                <li> Try fewer keywords.</li>
+                <li> Try different keywords.</li>
+                
+            </ul>
+
+
+        {% else%}
             <h1>Blog</h1>
             
-            <div class="col-eight md-six tab-full popular blogger_popular_content">
-                
+            <div class="row masonry-wrap">
+            <div class="masonry">
 
-                <div class="block-1-2 block-m-full popular__posts">
-                    
-                    {% for i in blog %}
-                    <article class="col-block popular__post">
-                        <a href="{{ i.template.templatename }}?blogtitle={{ i.blogTitle }}" class="blogger_popular_thumb"  >
-                            <img src="{{ i.template.templateimg.url }}" alt="">
+                <div class="grid-sizer"></div>
+                
+                {% for a in blog %}
+                <article class="masonry__brick entry format-standard" data-aos="fade-up">
+                        
+                    <div class="entry__thumb">
+                        <a href="{{ a.template.templatename }}?blogtitle={{ a.blogTitle }}" class="entry__thumb-link">
+                            <img src="{{ a.blogProfile.url }}" 
+                                     alt="">
                         </a>
-                        <div class="blogger_popular_text">
-                            <h5>{{ i.blogTitle }}</h5>
+                    </div>
+    
+                    <div class="entry__text">
+                        <div class="entry__header">
                             
-                            <section class="popular__meta">
-                                    <span class="popular__author"><span>By</span> {{i.blogAuthor}}</span>
-                                <span class="popular__date"><span>on</span> <time >{{ i.blogDate }}</time></span>
-                            </section>
-                        </div>
-                        <i class="icon-ellipsis-vertical"></i>
-                    </article>
-                    {% endfor %}
-
-
-                </div> <!-- end popular_posts -->
-                
-            </div> <!-- end popular -->
-
-            <div class="row top">
-            <h1>Articles</h1>
-            <div class="col-eight md-six tab-full popular blogger_popular_content">
-                
-
-                <div class="block-1-2 block-m-full popular__posts">
-                    
-                    {% for i in article %}
-                    <article class="col-block popular__post">
-                    
-                        <div class="blogger_popular_text">
-                            <h5>{{ i.articleName }}</h5>
+                            <div class="entry__date">
+                                <a href="#">{{ a.blogDate }}</a>
+                            </div>
+                            <h1 class="entry__title"><a href="{{ a.template.templatename }}?blogtitle={{ a.blogTitle }}">{{ a.blogTitle }}</a></h1>
                             
-                            <section class="popular__meta">
-                                <span class="popular__author"><span>By</span><b>{{i.articleAuthor}}</b></span>
-                                <span class="popular__date"><span>on</span> <time ><b>{{ i.articleDate }}</b></time></span>
-                            </section>
-                            <p class="addReadMore showlesscontent">{{ i.article }}</p>
                         </div>
-                        <i class="icon-ellipsis-vertical"></i>
-                    </article>
-                    {% endfor %}
-
-
-                </div> <!-- end popular_posts -->
+                        <!-- <div class="entry__excerpt">
+                            <p>
+                                Lorem ipsum Sed eiusmod esse aliqua sed incididunt aliqua incididunt mollit id et sit proident dolor nulla sed commodo est ad minim elit reprehenderit nisi officia aute incididunt velit sint in aliqua...
+                            </p>
+                        </div> -->
+                        <div class="entry__meta">
+                            <span class="entry__meta-links">
+                                <a href="category?cat={{a.blogAssociated.blogCatagories}}">{{a.blogCatagories}}</a> 
+                            </span>
+                        </div>
+                        <div class="dropdown report" >
+                            <i class="fa fa-ellipsis-h dropbtn"></i>
+                            <div class="dropdown-content">
+                                <a href="report?blogtitle={{i.blogTitle}}"><i class="fa fa-flag" aria-hidden="true"></i>    Report</a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    
+                </article>
+                {% endfor %}
                 
-            </div> <!-- end popular -->
-        {% else %}
-        <div>
-            
-            Your search - <b>{{request.GET.s}}</b> - did not match any documents.<br>
+                
+            </div> <!-- end masonry -->
+        </div> <!-- end masonry-wrap -->
 
-            Suggestions:
+           
 
-            <ul>
-            <li>Make sure that all words are spelled correctly.</li>
-            <li>Try different keywords.</li>
-            <li>Try more general keywords.</li>
-            </ul>
-        </div>
+
+                
         {% endif %}
         </div>
     </section>
@@ -209,7 +212,15 @@
             //Calling function after Page Load
             AddReadMore();
         });
+
+        $(document).ready(function(){
+            $(".dropbtn").click(function(){
+                $('.dropdown-content').hide();
+                $(this).parent().children('.dropdown-content').toggle(500);
+            });
+        });
     </script>
+    
 </body>
 
 </html>

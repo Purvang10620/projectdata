@@ -1,74 +1,3 @@
-/* =================================================================== 
- *
- *  Philosophy v1.0 Main Stylesheet
- *  1-2-2018
- *  ------------------------------------------------------------------
- *
- *  TOC:
- *  # base style overrides
- *    ## links
- *  # typography & general theme styles
- *    ## Lists
- *    ## responsive video container
- *    ## floated image
- *    ## tables
- *    ## spacing 
- *    ## pace.js styles - minimal
- *  # preloader (line scale)
- *  # forms
- *    ## Style Placeholder Text
- *    ## Change Autocomplete styles in Chrome
- *  # buttons
- *  # additional components
- *    ## alert box
- *    ## additional typo styles
- *    ## pagination
- *  # reusable and common theme styles
- *    ## mediaelement style overrides
- *    ## close button for search and mobile navigation
- *    ## slick slider
- *    ## masonry entries
- *    ## post formats - masonry view
- *  # pageheader
- *    ## header logo
- *    ## header social
- *    ## header-toggle
- *    ## header-search
- *    ## header search trigger
- *    ## main navigation
- *    ## pageheader content
- *    ## feature section animation
- *  # s-content
- *    ## masonry layout
- *  # s-extra
- *    ## popular posts
- *    ## about
- *    ## tags
- *  # footer
- *    ## footer link list
- *    ## subscribe form
- *    ## copyright
- *    ## go to top
- *  # blog styles
- *    ## content main
- *    ## content media
- *    ## post tags
- *    ## author profile
- *    ## blog single page navigation
- *    ## format gallery
- *    ## format video
- *    ## format audio
- *    ## comments
- *  # page styles
- *    ## contact page
- *
- * =================================================================== */
-
-
-/* ===================================================================
- * # base style overrides
- *
- * ------------------------------------------------------------------- */
 html {
    font-size: 10px;
 }
@@ -209,8 +138,9 @@ p.lead {
    font-family: "metropolis-medium", sans-serif;
    font-size: 2rem;
    line-height: 1.8;
-   margin-bottom: 3.6rem;
+   
    color: #000000;
+   margin-top: 60px;
 }
 
 @media only screen and (max-width:800px) {
@@ -4251,3 +4181,88 @@ footer h4::after {
 }
 
 /*# sourceMappingURL=main.css.map */
+
+.action-btn {
+   text-align: center;
+}
+
+.custom-thumb-img a {
+   display: block;
+}
+.custom-thumb-img {
+    box-shadow: 1px 0px 3px 0px #888888;
+   box-sizing: border-box;
+}
+.custom-thumb-img img {
+   height: 300px;
+   width:100%;
+}
+.f-password{
+   padding: 14px;
+   text-align: center;
+}
+.alert-error{
+   color:#721c24;
+   background-color: #f8d7da;
+   border-color: #f5c6cb;
+   position: relative;
+   padding: .75rem 1.25rem;
+   margin-bottom: 1rem;
+   border: 1px solid transparent;
+   border-radius: .25rem;
+}
+.details_main{
+   width: 100%;
+   background-color: #f2f2f2;
+}
+.blogger_popular_content {
+   width: 100%;
+}
+.userprofile{
+   background: #fff;
+   margin: 50px;
+   border-radius: 50px;
+   padding: 25px;
+   box-shadow: 0px 2px 5px 0px rgb(0 0 0 / 10%);
+}
+.blogger_popular_content article.popular__post {
+   width: 100%;
+   padding: 0;
+}
+.blogger_popular_content article a.blogger_popular_thumb {
+   position: none;
+   display: block;
+   float: left;
+}
+.blogger_popular_content article a.blogger_popular_thumb img {
+   width: 150px;
+   height: 150px;
+}
+.blogger_popular_content article div.blogger_popular_text {
+   float: left;
+   margin-left: 20px;
+}
+.blogger_popular_content article div.blogger_popular_button {
+   float: right;
+}
+.addReadMore.showlesscontent .SecSec,
+    .addReadMore.showlesscontent .readLess {
+        display: none;
+    }
+
+    .addReadMore.showmorecontent .readMore {
+        display: none;
+    }
+
+    .addReadMore .readMore,
+    .addReadMore .readLess {
+        font-weight: bold;
+        margin-left: 2px;
+        color: blue;
+        cursor: pointer;
+    }
+
+    .addReadMoreWrapTxt.showmorecontent .SecSec,
+    .addReadMoreWrapTxt.showmorecontent .readLess {
+        display: block;
+    }

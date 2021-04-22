@@ -23,7 +23,10 @@
                                 <div class="form-field">
                                     <select name="articlecatagory" id="articlecatagory" class="full-width"> 
                                         <option>Catagories</option>                                      
-                                        <option value="lifestyle">Lifestyle</option>
+                                        {% for i in cat %}
+                                        <option value="{{ i.cat_name }}" >{{ i.cat_name }}</option>
+                                        
+                                        <!-- <option value="lifestyle">Lifestyle</option>
                                         <option value="health">Health</option>
                                         <option value="family">Family</option>
                                         <option value="corporate">Corporate</option>
@@ -31,7 +34,8 @@
                                         <option value="technical">Technical</option>
                                         <option value="startup">StartUp</option>
                                         <option value="photography">Photography</option>
-                                        <option value="other">Other</option>
+                                        <option value="Other">Other</option> -->
+                                        {% endfor %}
                                     </select>
                                 </div>
                                 <div class="form-field">

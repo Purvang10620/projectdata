@@ -15,9 +15,10 @@
     <!--Favicon-->
     <!-- <link rel="shortcut icon" href="img/favicon/favicon.ico"> -->
 
-    
+        <link rel="stylesheet" href="{% static 'css/fontawesome.css' %}">
+
     <!--Fontawesome-->
-    <link rel="stylesheet" href="{% static 'css/font-awesome/css/font-awesome.min.css' %}">
+
 
     <!--Bootstrap CSS -->
     <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
@@ -71,7 +72,7 @@
 
     <!--About-->
     <section id="about">
-
+        
         <!--About 01-->
         <div id="about-01">
 
@@ -116,18 +117,21 @@
                             <div id="about-right">
 
                             <h4 class="s-content__author-name">
-                                <a href="#0">{{ bid.blogAuthor }}</a>
+                                <a href="#0">{{ bid.blogAuthor.first_name }} {{ bid.blogAuthor.last_name }}</a>
                             </h4>
                     
                             <p>
                                Contact Me on Email<label>{{ bid.blogAuthor.email }}</label>
                             </p>
                             <ul class="s-content__author-social">
-
-                           <li><a href="#0">Facebook</a></li>
+                            {% for s in sociallink%}
+                            <li><a href="{{s.sociallink}}" target="_blank">{{ s.sociallinkName }}</a></li>
+                           <!-- <li><a href="#0">Facebook</a></li>
                            <li><a href="#0">Twitter</a></li>
                            <li><a href="#0">GooglePlus</a></li>
-                           <li><a href="#0">Instagram</a></li>
+                           <li><a href="#0">Instagram</a></li> -->
+
+                           {% endfor %}
                         </ul>
 
                             </div>
@@ -136,6 +140,7 @@
                         {% endif %}
 
                     </div>
+
                     <!--About Bottom-->
                     <div class="row">
 
@@ -347,18 +352,7 @@
 
                     <div class="col-md-6">
                         <!--Contact left-->
-                        <div id="contact-left">
-                            <div class="vertical-heading">
-                                <h5></h5>
-                                <h2>Get<br>In <strong>Touch</strong></h2>
-                            </div>
-                            <ul class="social-list">
-                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                                <li><a href="#"><i class="fa fa-instagram"></i></a></li>
-                                <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                            </ul>
-                        </div>
+                        
 
                     </div>
 

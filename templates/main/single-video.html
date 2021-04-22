@@ -127,6 +127,7 @@
 
             <div class="col-full s-content__main">
 
+
                 {% if aid is null %}
                 
                 <p>Duis ex ad cupidatat tempor Excepteur cillum cupidatat fugiat nostrud cupidatat dolor sunt sint sit nisi est eu exercitation incididunt adipisicing veniam velit id fugiat enim mollit amet anim veniam dolor dolor irure velit commodo cillum sit nulla ullamco magna amet magna cupidatat qui labore cillum sit in tempor veniam consequat non laborum adipisicing aliqua ea nisi sint ut quis proident ullamco ut dolore culpa occaecat ut laboris in sit minim cupidatat ut dolor voluptate enim veniam consequat occaecat fugiat in adipisicing in amet Ut nulla nisi non ut enim aliqua laborum mollit quis nostrud sed sed. 
@@ -139,7 +140,7 @@
                 {% else %}
                     {% for i in aid %}
                     <p class="lead">{{ i.articleName }}</p>
-                    <p>{{ i.article }}  <a href="#">Read More</a></p>
+                    <p class="addReadMore showlesscontent">{{ i.article }}  </p>
 
                     <p>
                 <img src="{{ i.articleImage.url }}" sizes="(max-width: 2000px) 100vw, 2000px" alt="">
@@ -156,16 +157,6 @@
                     {% endfor %}
                 {% endif %}
 
-                <p class="s-content__tags">
-                    <span>Post Tags</span>
-
-                    <span class="s-content__tag-list">
-                        <a href="#0">orci</a>
-                        <a href="#0">lectus</a>
-                        <a href="#0">varius</a>
-                        <a href="#0">turpis</a>
-                    </span>
-                </p> <!-- end s-content__tags -->
 
                  {% if bid is null %}
 
@@ -197,7 +188,7 @@
 
                     <div class="s-content__author-about">
                         <h4 class="s-content__author-name">
-                            <a href="#0">{{ bid.blogAuthor }}</a>
+                            <a href="#0">{{ bid.blogAuthor.first_name }} {{ bid.blogAuthor.last_name }}</a>
                         </h4>
                     
                         <p>
@@ -287,8 +278,42 @@
     <!-- Java Script
     ================================================== -->
     <script src="{% static 'js/jquery-3.2.1.min.js' %}"></script>
-    <script src="{% static 'js/plugins.js' %}"></script>
-    <script src="{% static 'js/main.js' %}"></script>
+    <!-- <script src="{% static 'js/plugins.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script> -->
+    <script type="text/javascript">
+        function AddReadMore() {
+        //This limit you can set after how much characters you want to show Read More.
+        var carLmt = 300;
+        // Text to show when text is collapsed
+        var readMoreTxt = " ... Read More";
+        // Text to show when text is expanded
+        var readLessTxt = " Read Less";
+
+
+        //Traverse all selectors with this class and manupulate HTML part to show Read More
+        $(".addReadMore").each(function() {
+            if ($(this).find(".firstSec").length)
+                return;
+
+            var allstr = $(this).text();
+            if (allstr.length > carLmt) {
+                var firstSet = allstr.substring(0, carLmt);
+                var secdHalf = allstr.substring(carLmt, allstr.length);
+                var strtoadd = firstSet + "<span class='SecSec'>" + secdHalf + "</span><span class='readMore'  title='Click to Show More'>" + readMoreTxt + "</span><span class='readLess' title='Click to Show Less'>" + readLessTxt + "</span>";
+                $(this).html(strtoadd);
+            }
+
+        });
+        //Read More and Read Less Click Event binding
+        $(document).on("click", ".readMore,.readLess", function() {
+            $(this).closest(".addReadMore").toggleClass("showlesscontent showmorecontent");
+        });
+        }
+        $(function() {
+            //Calling function after Page Load
+            AddReadMore();
+        });
+    </script>
 
 </body>
 

@@ -1,52 +1,122 @@
 {% load static %}
+{% for message in messages %}
+<div class="alert-success"  role="alert">
+	{{message}}
+</div>                       
+{%endfor%}
 <div class="container">
-    <div class="row">
-        <div class="col-md-10">
-            <div class="myprofile">
-                <h2>Your Profile</h2> 
-                            
-            </div>
-        </div>
-        <div class="col-md-2">
-            <div>
-                <button>{{ sub }}  Subscriber</button>
-                
-            </div>
-        </div>
-                    
-    </div>
-    
-                
-                
+	<div class="row">
+		<div class="col-md-10">
+			<div class="myprofile">
+				<h2>Your Profile</h2> 
+				{% if udetails.profilepic %}
+				<img src="{{udetails.profilepic.url}}" class="profilepic">
+				{% else %}
+				<i class="fa fa-user-circle" style="font-size: 178px;"></i>
+				{% endif %}
+			</div>
+		</div>
+		<div class="col-md-2">
+			<div class="dropdown">
+				<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">{{ sub }}  Subscriber<span class="caret"></span></button>
+			  <!-- <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Dropdown Example
+			  	<span class="caret"></span></button> -->
+			  	<ul class="dropdown-menu" style="padding: 22px;">
+			  		{% if sub != 0%}
+			  		{% for i in s %}  
+
+			  		<li><label>{{ i.subscriber }}</label></li>
+
+			  		{% endfor %}
+
+			  		{%else%}
+			  		<li><label>No subscriber</label></li>
+			  		{%endif%}
+				<!-- <li><a href="#">HTML</a></li>
+				<li><a href="#">CSS</a></li>
+				<li><a href="#">JavaScript</a></li> -->
+			</ul>
+		</div>
+		
+	</div>
 </div>
-<div class="container userprofile">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-6">
-                    <label>Name:</label><span>{{ request.user }}</span>
-                    <label>Email:</label><span>{{ user.email }}</span>    
-                </div>
-                            
-            </div>
-            <div class="row social">
-                    <div class="col-md-6">
-                        <label>Your Social media link</label>
-                            <span>
-                                {% for i in linkid %}
-                                <a href="{{i.sociallink}}" target="_blank">{{ i.sociallinkName }}</a>
-                                {% endfor %}
-                            </span>
-                    </div>
-                            
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <button class="submit">Edit Profile</button>
-                </div>
-                
-            </div>     
-        </div>
-    </div>
-                    
+
 </div>
+
+<section class="statistic statistic2">  
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="statistic__item statistic__item--green">
+					<h2 class="number">{{ sub }}</h2>
+					<span class="desc">Subscriber</span>
+					<div class="icon">
+						<i class="fa fa-user"></i>
+					</div>
+				</div>
+
+			</div>
+			<div class="col-md-4">
+				<div class="statistic__item statistic__item--orange">
+					<h2 class="number">{{ blogid }}</h2>
+					<span class="desc">Blog</span>
+					<div class="icon">
+						<i class="fa fa-blog"></i>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="statistic__item statistic__item--blue">
+					<h2 class="number">{{ articleid }}</h2>
+					<span class="desc">Article</span>
+					<div class="icon">
+						<i class="fa fa-newspaper"></i>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>         
+</section>              
+
+<div class=" userprofile">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="row">
+				<div class="col-md-6">
+					<label>UserName:</label><span>{{ request.user }}</span>
+					<label>Name:</label><span>{{ user.first_name }} {{ user.last_name }}</span>
+					
+					<label>Email:</label><span>{{ user.email }}</span>    
+				</div>
+				
+			</div>
+			<div class="row social">
+				<div class="col-md-6">
+					<label>Your Social media link</label>
+					<span>
+						{% for i in linkid %}
+						<a href="{{i.sociallink}}" target="_blank">{{ i.sociallinkName }}</a>
+						{% endfor %}
+					</span>
+				</div>
+
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<button class="submit" id="editprofile">Edit Profile</button>
+				</div>
+
+			</div>     
+		</div>
+	</div>
+
+</div>
+
+
+
+<script src="{% static 'vendor/jquery-3.2.1.min.js' %}"></script>
+<script type="text/javascript">
+	$('#editprofile').click(function(){
+		$('.main-content').load('editprofile');
+	})
+</script>

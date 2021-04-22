@@ -1,4 +1,4 @@
-/* =================================================================== 
+f/* =================================================================== 
  *
  *  Philosophy v1.0 Base Stylesheet
  *  12-30-2017
@@ -939,6 +939,16 @@ textarea {
    margin-left: auto;
    margin-right: auto;
    text-align: center;
+}
+
+.social{
+   margin-top: 50px;
+}
+.usericon{
+   font-size: 50px;
+}
+.social a{
+   margin-right: 10px;
 }
 
 /*# sourceMappingURL=base.css.map */
